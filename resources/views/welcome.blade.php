@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    A
+                    Intizam
                 </div>
 
                 <div class="links">
