@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Awadh is annoyting person
                 </div>
 
                 <div class="links">
