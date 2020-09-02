@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Awadh is annoyting person
+                    azoz is annoyting person
                 </div>
 
                 <div class="links">
