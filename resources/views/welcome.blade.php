@@ -6,21 +6,12 @@
         <title>Laravel</title>
 
         <link rel="stylesheet" href="{{ asset('css/app.css')  }}">
-
+        <!-- <link rel="stylesheet" href="{{ asset('css/_variables.css')  }}"> -->
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
         <!-- Navbar content -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
+        <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
                 <a class="nav-link" href="#">About</a>
                 @if (Route::has('login'))
                     @auth
@@ -33,13 +24,16 @@
                         @endif
                     @endauth
                     @endif
-            </li>
-            </ul>
-        
-
-
-        <!-- Styles -->
+         </nav>
+    
+         <style>
+        .navbar-custom { 
+    background-color: #0c8676; 
+    } 
+    </style>
     </head>
+    
+    
 <body>
 </body>
 </html>
