@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<style>
+        .navbar-custom { 
+    background-color: #0c8676; 
+    } 
+
+    </style>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
 
         <link rel="stylesheet" href="{{ asset('css/app.css')  }}">
-
+        <!-- <link rel="stylesheet" href="{{ asset('css/_variables.css')  }}"> -->
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
         <!-- Navbar content -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
+        <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
                 <a class="nav-link" href="#">About</a>
                 @if (Route::has('login'))
                     @auth
@@ -33,13 +30,20 @@
                         @endif
                     @endauth
                     @endif
-            </li>
-            </ul>
-        
-
-
-        <!-- Styles -->
+         </nav>
     </head>
+
 <body>
+  <p>This is a paragraph.</p>
 </body>
+
+<!-- Footer -->
+
+<fotter class=" footer fixed-bottom navbar-custom">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright: Intizam
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </html>
