@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <head>
-    </style>
-    
+<head>
+        <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>Intizam</title>
 
         <link rel="stylesheet" href="{{ asset('css/app.css')  }}">
         <!-- <link rel="stylesheet" href="{{ asset('css/_variables.css')  }}"> -->
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
-        <!-- Navbar content -->
-        <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
+    
+         <style>
+        .navbar-custom { 
+    background-color: #0c8676; 
+    } 
+
+        .btn-link1 {
+    font-size: 100%;
+    color: #ffffff;
+    text-decoration: none;
+        }
+    
+    </style>
+    
+</head>
+
+
+<!-- Body -->
+
+<body>
+
+   <!-- Navbar content -->
+   <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
         <nav class="navbar navbar-expand-sm navbar-light bg-custom">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,20 +52,36 @@
                     @endauth
                     @endif
          </nav>
-    
-         <style>
-        .navbar-custom { 
-    background-color: #0c8676; 
-    } 
+    </nav>
 
-        .btn-link1 {
-    font-size: 100%;
-    color: #ffffff;
-    text-decoration: none;
-        }
-    
-    </style>
-</head>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+
+<!-- End Body -->
+</body>
+
+
 
 
 <!-- Footer -->
@@ -57,5 +92,5 @@
   </div>
   <!-- Copyright -->
 </footer>
-<!-- Footer -->
+<!-- End Footer -->
 </html>
