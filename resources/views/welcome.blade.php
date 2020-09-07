@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<style>
-        .navbar-custom { 
-    background-color: #0c8676; 
-    } 
 
-    </style>
     <head>
+    </style>
+    
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
@@ -49,12 +46,8 @@
         }
     
     </style>
-    </head>
-    
-    
-<body>
-  <p>This is a paragraph.</p>
-</body>
+</head>
+
 
 <!-- Footer -->
 
