@@ -18,21 +18,40 @@
         
         <!-- Navbar content -->
         <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
-                <a class="nav-link" href="#">About</a>
+        <nav class="navbar navbar-expand-sm navbar-light bg-custom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+                <div class="btn btn-link1" href="#">
+                <a class="btn btn-link1" href="{{ url('/#') }}">About</a>
                 @if (Route::has('login'))
                     @auth
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                        <a class="btn btn-link1" href="{{ url('/home') }}">Home</a>
                     @else
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-link1" href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a  class="nav-link" href="{{ route('register') }}">Register</a>
+                            <a class="btn btn-link1" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
                     @endif
          </nav>
-    </head>
+    
+         <style>
+        .navbar-custom { 
+    background-color: #0c8676; 
+    } 
 
+        .btn-link1 {
+    font-size: 100%;
+    color: #ffffff;
+    text-decoration: none;
+        }
+    
+    </style>
+    </head>
+    
+    
 <body>
   <p>This is a paragraph.</p>
 </body>
