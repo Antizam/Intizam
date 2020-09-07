@@ -12,6 +12,10 @@
         
         <!-- Navbar content -->
         <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
+        <nav class="navbar navbar-expand-sm navbar-light bg-custom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
                 <div class="btn btn-link1" href="#">
                 <a class="btn btn-link1" href="{{ url('/#') }}">About</a>
                 @if (Route::has('login'))
