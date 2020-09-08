@@ -67,7 +67,6 @@
         <div class="card" style="width: 18rem;">
         <div class="card-body">
          <h5 class="card-title">For Schools</h5>
-         <i class="material-icons pmd-list-icon align-middle">notifications</i>
         <p class="card-text">Its helps in organizing the process of students leaving the school and avoiding the crowding.</p>
       </div>
     </div>
