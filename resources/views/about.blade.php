@@ -7,7 +7,6 @@
         <title>Intizam</title>
 
         <link rel="stylesheet" href="{{ asset('css/app.css')  }}">
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <!-- <link rel="stylesheet" href="{{ asset('css/_variables.css')  }}"> -->
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -33,25 +32,15 @@
 <!-- Header -->
 <header>
 
-        <br><br><br><br><br><br><br><br><br>
+        <<br><br><br><br><br><br><br><br><br>
+
  <!-- Navbar content -->
  <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
         <nav class="navbar navbar-expand-sm navbar-light bg-custom">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-                <a class="btn btn-link1" href="/about ">About</a>
-                @if (Route::has('login'))
-                    @auth
-                        <a class="btn btn-link1" href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a class="btn btn-link1" href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a class="btn btn-link1" href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                    @endif
+        <a class="btn btn-link1" href="{{ url('/') }}">Home</a>
          </nav>
     </nav>
 </header>
@@ -64,9 +53,8 @@
         <div class="col-7">
         <div class="card" style="width: 18rem;">
         <div class="card-body">
-         <h5 class="card-title"> <i class="fas fa-building"></i> For Schools</h5>
-         <i class="material-icons pmd-list-icon align-middle"></i>
-        <p class="card-text">It helps in organizing the process of students leaving the school and avoiding the crowding</p>
+         <h5 class="card-title">For Schools</h5>
+        <p class="card-text">Its helps in organizing the process of students leaving the school and avoiding the crowding.</p>
       </div>
     </div>
   </div>
@@ -76,8 +64,8 @@
         <div class="col-7">
         <div class="card" style="width: 18rem;">
         <div class="card-body">
-         <h5 class="card-title"><i class='fas fa-car-side'></i> For Student Drivers</h5>
-        <p class="card-text">It helps by reducing the time of waiting for students to come out from school</p>
+         <h5 class="card-title">For Student Drivers</h5>
+        <p class="card-text">its helps by reducing the time of waiting for students to comes out from school.</p>
      </div>
   </div>
  </div>
@@ -86,8 +74,8 @@
         <div class="col-7">
         <div class="card" style="width: 18rem;">
         <div class="card-body">
-         <h5 class="card-title"><i class="fas fa-users"></i> For Students</h5>
-        <p class="card-text">It helps by organize them and avoid the crowds of students in the at school main gates</p>
+         <h5 class="card-title">For Students</h5>
+        <p class="card-text">it help by organize them and avoid the crowds of students in the school main gates.</p>
         </div>
       </div>
   </div>
