@@ -1,7 +1,6 @@
 @extends('layouts.app')
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <style>
-
 .sidebar {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 250px; /* Set the width of the sidebar */
@@ -13,8 +12,6 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 70px;
 }
-
-
 /* The navigation menu links */
 .sidebar a {
   padding: 15px 15px 15px 16px;
@@ -23,17 +20,16 @@
   color: white;
   display: block;
 }
-
 /* When you mouse over the navigation links, change their color */
 .sidebar a:hover {
-  color: white;
+  color:white;
+    text-decoration:none;
+    cursor:pointer;
 }
-
 .main {
   margin-left: 250px; /* Same as the width of the sidenav */
   padding: 0px 10px;
 }
-
 .sidebar a:hover:not(.active) {
   background-color: #555;
   color: white;
