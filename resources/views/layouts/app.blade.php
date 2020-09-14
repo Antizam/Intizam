@@ -33,8 +33,8 @@
 <body>
     <div id="app">
     <nav class="navbar navbar-expand-md navbar-custom shadow-sm">
-            <div class="container">
-                <a class="btn btn-link1" href="{{ url('/') }}">
+            <div class="container-fluid ">
+                <a class="col-6 btn btn-link1" href="{{ url('/') }}">
                     {{ config('Intizam', 'Intizam') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
