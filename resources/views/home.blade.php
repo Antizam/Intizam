@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <style>
 
 .sidebar {
@@ -16,7 +17,7 @@
 
 /* The navigation menu links */
 .sidebar a {
-  padding: 6px 8px 6px 16px;
+  padding: 15px 15px 15px 16px;
   text-decoration: none;
   font-size: 23px;
   color: white;
@@ -48,10 +49,11 @@
 <body>
 
 <div class="sidebar">
-  <a  href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+<a href="#home"><i class="fas fa-home"></i>  Home</a>
+<a href="#profile"><i class="fas fa-user"></i>  Profile</a>
+  <a href="#student"><i class="fas fa-users"></i>  Students</a>
+  <a href="#Leaving_schedule"><i class="far fa-clock"></i>  Leaving Schedule</a>
+  <a href="#Screening_table"><i class="fas fa-tv"></i>  Screen Table</a>
 </div>
 
 <div class="main">
