@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -11,9 +13,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile()
+    public function profile($id)
     {
-        return view('profile');
+      $user= User::find($id);
+
+      if($user){
+          return view('user.profile')->withUser($user);
+      }else{
+          return redirect()->back();
+      }
     }
 
     /**
@@ -54,9 +62,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+       if(Auth::user()){
+           $user = User::find(Auth::user()->id);
+
+           if($user) {
+               return view('user.edit')->withUser($user);
+           }else{
+               return redirect()->back();
+           }
+       }else{
+        return redirect()->back(); 
+       }
     }
 
     /**
@@ -66,9 +84,39 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::find(Auth::user()->id);
+
+        if($user){
+            $validate = null;
+            if(Auth::user()->email=== $request['email']){
+
+                $validate = $request->validate([
+                    'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+                ]);
+            }else{
+            $validate = $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+            ]);
+            }
+
+            if($validate){
+             $user->name = $request['name'];
+             $user->email = $request['email'];
+
+             $user->save();
+             $request->session()->flash('success', 'Your detalis is update');
+
+             return redirect()->back();
+            }else{
+                return redirect()->back();
+            }
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
