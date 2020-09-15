@@ -44,7 +44,7 @@
 <div class="container">
 <div class="sidebar">
 <a href="#home"><i class="fas fa-home"></i>  Home</a>
-<a href="/profile"><i class="fas fa-user"></i>  Profile</a>
+<a href="#profile"><i class="fas fa-user"></i>  Profile</a>
   <a href="#student"><i class="fas fa-users"></i>  Students</a>
   <a href="#Leaving_schedule"><i class="far fa-clock"></i>  Leaving Schedule</a>
   <a href="#Screening_table"><i class="fas fa-tv"></i>  Screen Table</a>
@@ -52,7 +52,7 @@
 </div>
 
 <div class="container col-8"> 
-  <p>This the screen size is 700px or less.</p>
+  <p>profile</p>
 </div>
 </div>
 
