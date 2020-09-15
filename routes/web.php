@@ -28,3 +28,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/{id}', 'UserController@profile')->name('user.profile');
 
+Route::get('/edit/user/', 'UserController@edit')->name('user.edit');
+
+Route::post('/edit/user/', 'UserController@update')->name('user.update');
