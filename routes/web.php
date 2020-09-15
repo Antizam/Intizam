@@ -26,5 +26,5 @@ Route::get('/about', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/user/{id}', 'UserController@profile')->name('user.profile');
 
