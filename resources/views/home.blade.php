@@ -62,100 +62,13 @@
   <div class="container">
     <div class="sidebar">
       <a href="#home"><i class="fas fa-home"></i> Home</a>
-      <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+      <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i>  Profile</a>
       <a href="#student"><i class="fas fa-users"></i> Students</a>
       <a href="#Leaving_schedule"><i class="far fa-clock"></i> Leaving Schedule</a>
       <a href="#Screening_table"><i class="fas fa-tv"></i> Screen Table</a>
     </div>
 
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card w-100 bg-colour1">
-            <div class="card-body">
-              <div class="text-center font-weight-bold">{{ __('Profile') }}</div>
-              <form method="POST" action="{{ route('register') }}">
-                @csrf
-
-                <div class="form-group row">
-                  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                  <div class="col-md-6">
-                    <lable id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
-
-                  <div class="col-md-6">
-                    <lable id="phone" type="tel" name="phone" pattern="[0-9]{10}" class="form-control @error('number') is-invalid @enderror">
-
-                      @error('number')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                  <div class="col-md-6">
-                    <label id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                      @error('email')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-                  <div class="col-md-6">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>Riyadh</option>
-                      <option>Buraydah</option>
-                      <option>Dammam</option>
-                      <option>Jeddah</option>
-                      <option>Makkah</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
-                  <div class="col-md-6">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>Neighborhood 1</option>
-                      <option>Neighborhood 2</option>
-                      <option>Neighborhood 3</option>
-                      <option>Neighborhood 4</option>
-                      <option>Neighborhood 5</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm text-justify text-left1">
-                      <button type="submit" class="btn btn-primary mb-4" href="#">Edit Profile</button>
-                      <button type="submit" class="btn btn-primary mb-4" href="#">Change Password</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
 
 </body>
 @endsection
