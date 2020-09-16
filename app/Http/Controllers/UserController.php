@@ -94,18 +94,28 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255'
+                    'email' => 'required', 'email', 'max:255',
+                    'phone_number' => 'required', 'string', 'min:10', 'max:1' , 'unique:users'
                 ]);
-            } else {
+            }if(Auth::user()->email === $request['phone_number']){
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users'
+                    'email' => 'required', 'email', 'max:255',
+                    'phone_number' => 'required', 'string', 'max:10', 'min:0' , 'unique:users'
+                ]);
+            }
+             else {
+                $validate = $request->validate([
+                    'name' => 'required', 'string', 'min:8',
+                    'email' => 'required', 'email', 'max:255', 'unique:users',
+                    'phone_number' => 'required', 'string', 'max:10', 'min:0' , 'unique:users'
                 ]);
             }
 
             if ($validate) {
                 $user->name = $request['name'];
                 $user->email = $request['email'];
+                 $user->phone_number = $request['phone_number'];
 
                 $user->save();
                 $request->session()->flash('success', 'Your detalis is update');
