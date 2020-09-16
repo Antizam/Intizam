@@ -93,7 +93,7 @@
                   <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
 
                   <div class="col-md-6">
-                    <input id="phone" type="tel" name="phone" pattern="[0-9]{10}" class="form-control @error('number') is-invalid @enderror">
+                  <input id="phone_number" type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $user['phone_number'] }}"  required autocomplete="phone_number" autofocus>
 
                     @error('number')
                     <span class="invalid-feedback" role="alert">
@@ -148,7 +148,6 @@
                   <div class="row">
                     <div class="col-sm text-justify text-left1">
                       <button type="submit" class="btn btn-primary mb-4" href="#">Edit Profile</button>
-                      <button type="submit" class="btn btn-primary mb-4" href="#">Change Password</button>
                     </div>
                   </div>
                 </div>
