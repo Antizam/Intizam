@@ -15,13 +15,13 @@ class UserController extends Controller
      */
     public function profile($id)
     {
-      $user= User::find($id);
+        $user = User::find($id);
 
-      if($user){
-          return view('user.profile')->withUser($user);
-      }else{
-          return redirect()->back();
-      }
+        if ($user) {
+            return view('user.profile')->withUser($user);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -64,17 +64,17 @@ class UserController extends Controller
      */
     public function edit()
     {
-       if(Auth::user()){
-           $user = User::find(Auth::user()->id);
+        if (Auth::user()) {
+            $user = User::find(Auth::user()->id);
 
-           if($user) {
-               return view('user.edit')->withUser($user);
-           }else{
-               return redirect()->back();
-           }
-       }else{
-        return redirect()->back(); 
-       }
+            if ($user) {
+                return view('user.edit')->withUser($user);
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -88,33 +88,33 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-        if($user){
+        if ($user) {
             $validate = null;
-            if(Auth::user()->email=== $request['email']){
+            if (Auth::user()->email === $request['email']) {
 
                 $validate = $request->validate([
-                    'name' => ['required', 'string', 'max:255'],
-                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+                    'name' => 'required', 'string', 'min:8',
+                    'email' => 'required', 'email', 'max:255'
                 ]);
-            }else{
-            $validate = $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
-            ]);
+            } else {
+                $validate = $request->validate([
+                    'name' => 'required', 'string', 'min:8',
+                    'email' => 'required', 'email', 'max:255', 'unique:users'
+                ]);
             }
 
-            if($validate){
-             $user->name = $request['name'];
-             $user->email = $request['email'];
+            if ($validate) {
+                $user->name = $request['name'];
+                $user->email = $request['email'];
 
-             $user->save();
-             $request->session()->flash('success', 'Your detalis is update');
+                $user->save();
+                $request->session()->flash('success', 'Your detalis is update');
 
-             return redirect()->back();
-            }else{
+                return redirect()->back();
+            } else {
                 return redirect()->back();
             }
-        }else{
+        } else {
             return redirect()->back();
         }
     }
