@@ -79,7 +79,14 @@
               <h5><div class="text-center font-weight-bold">{{ __('Edit Profile') }}</div></h5>
               <form method="POST" action="{{ route('user.update') }}">
                 @csrf
-
+                
+                <div class="card-body">
+                @if(session('success'))
+                <div class ="alert alert-success" role="alert">
+                {{session('success')}}
+                @endif
+                </div>
+                
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
