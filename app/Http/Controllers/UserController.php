@@ -14,13 +14,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile($id)
+    public function profile($id, Request $request)
     {
         $user = User::find($id);
 
         if ($user) {
             return view('user.profile')->withUser($user);
         } else {
+            $request->session()->flash('danger', ' This profile does not exist');
             return redirect()->back();
         }
     }
@@ -63,7 +64,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
         if (Auth::user()) {
             $user = User::find(Auth::user()->id);
@@ -71,9 +72,11 @@ class UserController extends Controller
             if ($user) {
                 return view('user.edit')->withUser($user);
             } else {
-                return redirect()->back();
+                $request->session()->flash('error', 'Whoops ,Something went wrong !');
+                return redirect()->route('user.profile');
             }
         } else {
+            $request->session()->flash('error', 'This page only for authenticated users !');
             return redirect()->back();
         }
     }
@@ -95,9 +98,9 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'email' => 'required', 'email', 'max:255', 'unique:users',
                     'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
-                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             }
@@ -105,9 +108,9 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'email' => 'required', 'email', 'max:255', 'unique:users',
                     'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
-                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             }
@@ -115,26 +118,26 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'email' => 'required', 'email', 'max:255', 'unique:users',
                     'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
-                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             }
             if (Auth::user()->email === $request['phone_number']) {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'email' => 'required', 'email', 'max:255', 'unique:users',
                     'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
-                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             } else {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'email' => 'required', 'email', 'max:255', 'unique:users',
                     'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
-                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             }
@@ -147,7 +150,7 @@ class UserController extends Controller
                 $user->neighborhood = $request['neighborhood'];
 
                 $user->save();
-                $request->session()->flash('success', 'Your detalis is update');
+                $request->session()->flash('success', 'Your profile has been updated');
 
                 return redirect()->back();
             } else {

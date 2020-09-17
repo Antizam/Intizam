@@ -87,6 +87,12 @@
         <div class="col-md-8">
           <div class="card w-100 bg-colour1">
             <div class="card-body">
+
+              @if (session('danger'))
+              <div class="alert alert-danger">
+                {{ session('danger') }}
+              </div>
+              @endif
               <h5>
                 <div class="text-center font-weight-bold">{{ __('Profile') }}</div>
               </h5>
@@ -133,7 +139,7 @@
                 <div class="form-group row">
                   <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
-                <div class="col-md-6">
+                  <div class="col-md-6">
                     <label for="city"></label>
                     <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user['city'] }}" readonly required autocomplete="city" autofocus>
                   </div>
@@ -142,7 +148,7 @@
                 <div class="form-group row">
                   <label for="neighborhood" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
 
-                <div class="col-md-6">
+                  <div class="col-md-6">
                     <label for="neighborhood"></label>
                     <input id="neighborhood" type="text" class="form-control @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ $user['neighborhood'] }}" readonly required autocomplete="neighborhood" autofocus>
                   </div>
