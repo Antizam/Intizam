@@ -61,7 +61,7 @@
   }
 
   .text-left1 {
-    padding-left: 40% !important;
+    padding-left: 35% !important;
 
   }
 </style>
@@ -71,11 +71,14 @@
 <body>
   <div class="container">
     <div class="sidebar">
-      <a href="#home"><i class="fas fa-home"></i> Home</a>
+      <br>
+      <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
       <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
       <a href="#student"><i class="fas fa-users"></i> Students</a>
       <a href="#Leaving_schedule"><i class="far fa-clock"></i> Leaving Schedule</a>
       <a href="#Screening_table"><i class="fas fa-tv"></i> Screen Table</a>
+      <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
+      <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
 
 
@@ -84,7 +87,9 @@
         <div class="col-md-8">
           <div class="card w-100 bg-colour1">
             <div class="card-body">
-              <h5><div class="text-center font-weight-bold">{{ __('Profile') }}</div></h5>
+              <h5>
+                <div class="text-center font-weight-bold">{{ __('Profile') }}</div>
+              </h5>
               <form method="POST" action="{{ route('register') }}">
                 @csrf
 
@@ -130,7 +135,7 @@
                   <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
                   <div class="col-md-6">
 
-                    <select  class="form-control" id="exampleFormControlSelect1" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;">
+                    <select class="form-control" id="exampleFormControlSelect1" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;">
                       <option value="1">Country1</option>
                       <option value="2">Country2</option>
                       <option value="3">Country3</option>
@@ -161,8 +166,8 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-sm text-justify text-left1">
-                    <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.edit') }}">{{ __('Edit Profile') }}</a>‏
-                      <button type="submit" class="btn btn-primary mb-4" href="#">Change Password</button>
+                      <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.edit')}}">{{ __('Edit Profile') }}</a>‏
+                      <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.password')}}">{{ __('Change Password') }}</a>
                     </div>
                   </div>
                 </div>
