@@ -16,6 +16,7 @@
     /* Disable horizontal scroll */
     padding-top: 50px;
   }
+
   /* The navigation menu links */
   .sidebar a {
     padding: 15px 15px 15px 16px;
@@ -24,35 +25,42 @@
     color: white;
     display: block;
   }
+
   /* When you mouse over the navigation links, change their color */
   .sidebar a:hover {
     color: white;
     text-decoration: none;
     cursor: pointer;
   }
+
   .bg-colour1 {
     background-color: #0c8676 !important;
   }
+
   .btn-link1 {
     font-size: 100%;
     color: #ffffff;
     text-decoration: none;
   }
+
   .sidebar a:hover:not(.active) {
     background-color: #555;
     color: white;
   }
+
   /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
   @media screen and (max-height: 400px) {
     .sidebar {
       padding-top: 15px;
     }
+
     .sidebar a {
       font-size: 18px;
     }
   }
+
   .text-left1 {
-    padding-left: 40% !important;
+    padding-left: 35% !important;
   }
 </style>
 
@@ -144,7 +152,7 @@
                   <div class="row">
                     <div class="col-sm text-justify text-left1">
                       <button type="submit" class="btn btn-primary mb-4" href="#">Edit Profile</button>
-                      <button type="submit" class="btn btn-primary mb-4" href="#">Change Password</button>
+                      <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.password') }}">{{ __('Change Password') }}</a>
                     </div>
                   </div>
                 </div>
