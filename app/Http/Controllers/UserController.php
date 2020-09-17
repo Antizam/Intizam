@@ -94,28 +94,56 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255',
-                    'phone_number' => 'required', 'string', 'min:10', 'max:1' , 'unique:users'
-                ]);
-            }if(Auth::user()->email === $request['phone_number']){
-                $validate = $request->validate([
-                    'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255',
-                    'phone_number' => 'required', 'string', 'max:10', 'min:0' , 'unique:users'
+                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
+                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             }
-             else {
+            if (Auth::user()->city === $request['city']) {
+
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users',
-                    'phone_number' => 'required', 'string', 'max:10', 'min:0' , 'unique:users'
+                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
+                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'neighborhood' => 'required', 'string', 'min:2', 'max:30'
+                ]);
+            }
+            if (Auth::user()->neighborhood === $request['neighborhood']) {
+
+                $validate = $request->validate([
+                    'name' => 'required', 'string', 'min:8',
+                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
+                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'neighborhood' => 'required', 'string', 'min:2', 'max:30'
+                ]);
+            }
+            if (Auth::user()->email === $request['phone_number']) {
+                $validate = $request->validate([
+                    'name' => 'required', 'string', 'min:8',
+                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
+                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'neighborhood' => 'required', 'string', 'min:2', 'max:30'
+                ]);
+            } else {
+                $validate = $request->validate([
+                    'name' => 'required', 'string', 'min:8',
+                    'email' => 'required', 'email', 'max:255','unique:users',
+                    'phone_number' => 'required', 'string', 'min:10', 'max:1', 'unique:users',
+                    'city' => 'required', 'string', 'min:2', 'max:30', 
+                    'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             }
 
             if ($validate) {
                 $user->name = $request['name'];
                 $user->email = $request['email'];
-                 $user->phone_number = $request['phone_number'];
+                $user->phone_number = $request['phone_number'];
+                $user->city = $request['city'];
+                $user->neighborhood = $request['neighborhood'];
 
                 $user->save();
                 $request->session()->flash('success', 'Your detalis is update');

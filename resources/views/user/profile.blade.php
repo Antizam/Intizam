@@ -125,36 +125,21 @@
                   </div>
                 </div>
 
-
                 <div class="form-group row">
-                  <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-                  <div class="col-md-6">
+                  <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
-                    <select  class="form-control" id="exampleFormControlSelect1" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;">
-                      <option value="1">Country1</option>
-                      <option value="2">Country2</option>
-                      <option value="3">Country3</option>
-                      <option value="4">Country4</option>
-                      <option value="5">Country5</option>
-                      <option value="6">Country6</option>
-                      <option value="7" selected="selected">Country7</option>
-                      <option value="8">Country8</option>
-                      <option value="9">Country9</option>
-                    </select>
+                <div class="col-md-6">
+                    <label for="city"></label>
+                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user['city'] }}" readonly required autocomplete="city" autofocus>
                   </div>
                 </div>
 
-
                 <div class="form-group row">
-                  <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
-                  <div class="col-md-6">
-                    <select class="form-control" id="exampleFormControlSelect1" readonly>
-                      <option>Neighborhood 1</option>
-                      <option>Neighborhood 2</option>
-                      <option>Neighborhood 3</option>
-                      <option>Neighborhood 4</option>
-                      <option>Neighborhood 5</option>
-                    </select>
+                  <label for="neighborhood" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
+
+                <div class="col-md-6">
+                    <label for="neighborhood"></label>
+                    <input id="neighborhood" type="text" class="form-control @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ $user['neighborhood'] }}" readonly required autocomplete="neighborhood" autofocus>
                   </div>
                 </div>
 
