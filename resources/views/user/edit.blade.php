@@ -91,10 +91,18 @@
                 @csrf
 
                 <div class="card-body">
-                  @if(session('success'))
-                  <div class="alert alert-success" role="alert">
-                    {{session('success')}}
-                    @endif
+                @if(session('success'))
+                <div class ="alert alert-success" role="alert">
+                {{session('success')}}
+                @endif
+                </div>
+
+                <div class="form-group row">
+                  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                  <div class="col-md-6">
+                  <label for="name"></label> 
+                   <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user['name'] }}"  required autocomplete="name" autofocus>
                   </div>
 
                   <div class="form-group row">
@@ -133,39 +141,29 @@
                       @enderror
                     </div>
                   </div>
+                </div>
 
+                <div class="form-group row">
+                  <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
-                  <div class="form-group row">
-                    <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-                    <div class="col-md-6">
-                      <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Riyadh</option>
-                        <option>Buraydah</option>
-                        <option>Dammam</option>
-                        <option>Jeddah</option>
-                        <option>Makkah</option>
-                      </select>
-                    </div>
+                  <div class="col-md-6">
+                  <label for="city"></label> 
+                   <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user['city'] }}"  required autocomplete="city" autofocus>
                   </div>
+                </div>
 
-                  <div class="form-group row">
-                    <label for="exampleFormControlSelect1" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
-                    <div class="col-md-6">
-                      <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Neighborhood 1</option>
-                        <option>Neighborhood 2</option>
-                        <option>Neighborhood 3</option>
-                        <option>Neighborhood 4</option>
-                        <option>Neighborhood 5</option>
-                      </select>
-                    </div>
+                <div class="form-group row">
+                  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
+
+                  <div class="col-md-6">
+                  <label for="neighborhood"></label> 
+                   <input id="neighborhood" type="text" class="form-control @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ $user['neighborhood'] }}"  required autocomplete="neighborhood" autofocus>
                   </div>
-
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-sm text-justify text-left1">
-                        <button type="submit" class="btn btn-primary mb-4" href="#">Edit Profile</button>
-                      </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm text-justify text-left1">
+                      <button type="submit" class="btn btn-primary mb-4" href="#">Edit Profile</button>
                     </div>
                   </div>
               </form>
