@@ -88,7 +88,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
         $user = User::find(Auth::user()->id);
 
@@ -98,8 +98,8 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' =>  'required','unique:users' ,'email',
-                    'phone_number' => 'required|digits:10', 'unique:users',
+                    'email' => 'required|email|unique:users,email,'.$user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -108,8 +108,8 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' =>  'required','unique:users' ,'email',
-                    'phone_number' => 'required|digits:10', 'unique:users',
+                    'email' => 'required|email|unique:users,email,'.$user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -118,8 +118,8 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' =>  'required','unique:users' ,'email',
-                    'phone_number' => 'required|digits:10', 'unique:users',
+                    'email' => 'required|email|unique:users,email,'.$user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -127,8 +127,8 @@ class UserController extends Controller
             if (Auth::user()->email === $request['phone_number']) {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' =>  'required','unique:users' ,'email',
-                    'phone_number' => 'required|digits:10', 'unique:users',
+                    'email' => 'required|email|unique:users,email,'.$user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -136,16 +136,16 @@ class UserController extends Controller
             if (Auth::user()->email === $request['name']) {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' =>  'required','unique:users' ,'email',
-                    'phone_number' => 'required|digits:10', 'unique:users',
+                    'email' => 'required|email|unique:users,email,'.$user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             } else {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' =>  'required','unique:users' ,'email',
-                    'phone_number' => 'required|digits:10', 'unique:users',
+                    'email' => 'required|email|unique:users,email,'.$user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
