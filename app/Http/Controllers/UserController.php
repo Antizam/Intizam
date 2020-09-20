@@ -98,7 +98,7 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users',
+                    'email' =>  'required','unique:users' ,'email',
                     'phone_number' => 'required|digits:10', 'unique:users',
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
@@ -108,7 +108,7 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users',
+                    'email' =>  'required','unique:users' ,'email',
                     'phone_number' => 'required|digits:10', 'unique:users',
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
@@ -118,7 +118,7 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users',
+                    'email' =>  'required','unique:users' ,'email',
                     'phone_number' => 'required|digits:10', 'unique:users',
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
@@ -127,7 +127,7 @@ class UserController extends Controller
             if (Auth::user()->email === $request['phone_number']) {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users',
+                    'email' =>  'required','unique:users' ,'email',
                     'phone_number' => 'required|digits:10', 'unique:users',
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
@@ -136,7 +136,7 @@ class UserController extends Controller
             if (Auth::user()->email === $request['name']) {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users',
+                    'email' =>  'required','unique:users' ,'email',
                     'phone_number' => 'required|digits:10', 'unique:users',
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
@@ -144,7 +144,7 @@ class UserController extends Controller
             } else {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required', 'email', 'max:255', 'unique:users',
+                    'email' =>  'required','unique:users' ,'email',
                     'phone_number' => 'required|digits:10', 'unique:users',
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
