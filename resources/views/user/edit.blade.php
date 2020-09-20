@@ -84,18 +84,23 @@
         <div class="col-md-8">
           <div class="card w-100 bg-colour1">
             <div class="card-body">
+
+              @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div><br />
+              @endif
               <h5>
                 <div class="text-center font-weight-bold">{{ __('Edit Profile') }}</div>
               </h5>
               <form method="POST" action="{{ route('user.update') }}">
                 @csrf
 
-                @if (session('error'))
-                <div class="alert alert-danger">
-                  {{ session('error') }}
-                </div>
-                @endif
-                
+
                 <div class="card-body">
                   @if(session('success'))
                   <div class="alert alert-success" role="alert">
@@ -110,6 +115,12 @@
                     <div class="col-md-6">
                       <label for="name"></label>
                       <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user['name'] }}" required autocomplete="name" autofocus>
+
+                      @error('name')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
                     </div>
                   </div>
 
@@ -119,7 +130,7 @@
                     <div class="col-md-6">
                       <input id="phone_number" type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $user['phone_number'] }}" required autocomplete="phone_number" autofocus>
 
-                      @error('number')
+                      @error('phone_number')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                       </span>
@@ -147,6 +158,12 @@
                     <div class="col-md-6">
                       <label for="city"></label>
                       <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user['city'] }}" required autocomplete="city" autofocus>
+
+                      @error('city')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
                     </div>
                   </div>
 
@@ -156,6 +173,12 @@
                     <div class="col-md-6">
                       <label for="neighborhood"></label>
                       <input id="neighborhood" type="text" class="form-control @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ $user['neighborhood'] }}" required autocomplete="neighborhood" autofocus>
+
+                      @error('neighborhood')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
                     </div>
                   </div>
                   <div class="container">
