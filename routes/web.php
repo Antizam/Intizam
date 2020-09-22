@@ -20,7 +20,6 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -34,3 +33,20 @@ Route::post('/password/user/', 'UserController@changePassword')->name('changePas
 Route::get('/edit/user/', 'UserController@edit')->name('user.edit');
 
 Route::post('/edit/user/', 'UserController@update')->name('user.update');
+
+/*
+Route::resource('students', 'StudentsController');
+call as students.show
+url as
+'/students/{student}'
+*/
+
+Route::get('students/{id}', 'StudentsController@index')->name('student.index');
+
+Route::get('/students/{id}/edit', 'StudentsController@edit')->name('student.edit');
+
+Route::post('/students/{id}/edit', 'StudentsController@update')->name('student.update');
+
+Route::delete('/students/{id}/delete', 'StudentsController@destroy')->name('student.destroy');
+
+
