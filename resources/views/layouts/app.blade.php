@@ -75,6 +75,9 @@
                                 <a class="dropdown-item" href="{{ route('user.edit')}}">
                                     {{ __('Edit Profile') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('student.index', Auth::user()->id) }}">
+                                    {{ __('Student Profile') }}
+                                </a>
 
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
