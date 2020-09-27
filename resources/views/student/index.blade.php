@@ -79,40 +79,59 @@
       <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
 
+
     <div class="row">
-<div class="col-sm-12">
-<h4><div class="text-center font-weight-bold">{{ __('Edit Profile') }}</div></h4>
-  <table class="table table-striped">
-    <thead>
-        <tr>
-          <td>ID</td>
-          <td>Name</td>
-          <td>Email</td>
-          <td colspan = 2>Actions</td>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach($users->students as $student)
-        <tr>
+      <div class="col-lg-12 margin-tb">
+        <a class="btn btn-success" href="{{ route('student.create', Auth::user()->id) }}"> Create New Student</a>
+      </div>
+
+    </div>
+
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
+
+
+    <div class="row">
+      <table class="table table-bordered table-striped table-sm text-center">
+        <thead class="thead-dark">
+          <tr>
+            <th>No</th>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Student Email</th>
+            <th width="280px">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($students as $student)
+          <tr>
+            <td>{{ ++$i }}</td>
             <td>{{$student->std_id}}</td>
             <td>{{$student->std_name}}</td>
             <td>{{$student->std_email}}</td>
-            <td>
-                <a href="{{ route('student.edit',$student->std_id)}}" class="btn btn-primary">Edit</a>
-            </td>
-            <td>
-                <form action="{{ route('student.destroy', $student->std_id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-  </table>
-<div>
-</div>
 
+            <td>
+              <form action="{{ route('student.destroy',$student->std_id) }}" method="POST">
+
+                <a class="btn btn-info" href="{{ route('student.show',$student->std_id) }}">Show</a>
+
+                <a class="btn btn-primary" href="{{ route('student.edit',$student->std_id) }}">Edit</a>
+
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+    {{ $students->links() }}
 </body>
 @endsection
