@@ -18,9 +18,6 @@ class CreateStudentsTable extends Migration
             $table->string('std_password');
             $table->string('std_name');
             $table->string('std_email');
-            $table->string('std_relation');
-            $table->string('std_relation_name');
-            $table->string('std_relation_number');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
