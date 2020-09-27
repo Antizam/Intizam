@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -41,12 +42,17 @@ url as
 '/students/{student}'
 */
 
-Route::get('students/{id}', 'StudentsController@index')->name('student.index');
+Route::get('{id}/students', 'StudentsController@index')->name('student.index');
 
-Route::get('/students/{id}/edit', 'StudentsController@edit')->name('student.edit');
+Route::get('students/create/', 'StudentsController@create')->name('student.create');
 
-Route::post('/students/{id}/edit', 'StudentsController@update')->name('student.update');
-
-Route::delete('/students/{id}/delete', 'StudentsController@destroy')->name('student.destroy');
+Route::post('{id}/students/store/', 'StudentsController@store')->name('student.store');
 
 
+Route::get('students/{std_id}', 'StudentsController@show')->name('student.show');
+
+Route::get('students/{std_id}/edit', 'StudentsController@edit')->name('student.edit');
+
+Route::post('students/{std_id}', 'StudentsController@update')->name('student.update');
+
+Route::DELETE('students/{std_id}', 'StudentsController@destroy')->name('student.destroy');
