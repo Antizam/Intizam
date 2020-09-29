@@ -56,3 +56,20 @@ Route::get('students/{std_id}/edit', 'StudentsController@edit')->name('student.e
 Route::post('students/{std_id}', 'StudentsController@update')->name('student.update');
 
 Route::DELETE('students/{std_id}', 'StudentsController@destroy')->name('student.destroy');
+
+#####################################          Relation            ##########################################################
+Route::get('{std_id}/relation', 'RelationController@index')->name('relation.index');
+
+
+Route::get('relation/{std_id}/create/', 'RelationController@create')->name('relation.create');
+
+Route::post('{std_id}/relation/store/', 'RelationController@store')->name('relation.store');
+
+
+Route::get('relation/{relation_id}', 'RelationController@show')->name('relation.show');
+
+Route::get('relation/{relation_id}/edit', 'RelationController@edit')->name('relation.edit');
+
+Route::post('relation/{relation_id}', 'RelationController@update')->name('relation.update');
+
+Route::DELETE('relation/{relation_id}', 'RelationController@destroy')->name('relation.destroy');
