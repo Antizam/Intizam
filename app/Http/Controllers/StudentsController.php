@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\students;
+use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 use Hash;
 
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -22,7 +26,7 @@ class StudentsController extends Controller
     public function index($id, Request $request)
     {
         $users = User::find($id);
-        $users = DB::table('students')->where('user_id', $users->id)->paginate(6);
+        $users = DB::table('students')->orderBy('created_at', 'desc')->where('user_id', $users->id)->paginate(6);
 
         return view('student.index', ['students' => $users])
             ->with('i');
@@ -79,7 +83,6 @@ class StudentsController extends Controller
             'std_id' => 'required|digits:10|unique:students,std_id',
             'std_name' => 'required|string|max:255',
             'std_email' => 'required|email|unique:students,std_email',
-            'std_password' => 'required|min:8',
         ];
         $warning = [
             "std_id.required" => "The Student ID is required ",
@@ -90,20 +93,21 @@ class StudentsController extends Controller
 
             "std_email.required" => "The Student Email is required ",
             "std_email.unique" => "This email is already store in the school",
-            "std_email.email" => "This email must be a valid email address,check the syntax !",
+            "std_email.email" => "This email must be a valid email address,check the syntax !"
 
-            "std_password.required" => "The Students password is required",
-            "std_password.min" => "The Students password should be at least 8 character"
         ];
         $validatedData = $request->validate($rules, $warning);
 
         $new_Students = new Students();
 
+        $std_password = Str::random(8);
 
-        $info = $request->all();
+        $std_info = $request->all();
         $new_Students->user_id = $id;
-        $info['std_password'] = Hash::make($info['std_password']);
-        $new_Students->fill($info);
+
+        $std_info['std_password'] = Crypt::encryptString($std_password);
+
+        $new_Students->fill($std_info);
         $new_Students->save();
 
         $request->session()->flash('success', 'Your profile has been updated');
@@ -116,9 +120,14 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($std_id, Request $request, Students $student)
     {
-        //
+        $student = Students::find($std_id);
+
+        $std_password_decrypt = Crypt::decryptString($student->std_password);
+        $student->std_password = $std_password_decrypt;
+
+        return view("student.show", compact('student'));
     }
 
     /**
@@ -127,10 +136,15 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($std_id, Request $request)
+
+    public function edit($std_id, Request $request, Students $student)
     {
         $student = Students::find($std_id);
-        return view("student.edit", compact("student"));
+
+        $std_password_decrypt = Crypt::decryptString($student->std_password);
+        $student->std_password = $std_password_decrypt;
+
+        return view("student.edit", compact('student'));
     }
 
     /**
@@ -140,9 +154,32 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($std_id, Request $request,  Students $student)
     {
-        //
+        $student = Students::find($std_id);
+        
+        $rules = [
+            'std_name' => 'required|string|max:255',
+        ];
+        $warning = [
+            "std_name.required" => "The Student Name is required ",
+        ];
+
+        $validatedData = $request->validate($rules, $warning);
+
+        $std_info = $request->all();
+
+        if (!empty($std_info['std_password'])) {
+            $std_info['std_password'] = Crypt::encryptString($std_info['std_password']);
+        } else {
+            $std_info = array_except($std_info, array('std_password'));
+        }
+
+        // $std_info['std_password'] = Crypt::encryptString($student->std_password);
+        $student->update($std_info);
+        $request->session()->flash('success', 'Student updated successfully');
+
+        return redirect()->route('student.index', $student->user_id);
     }
 
     /**
