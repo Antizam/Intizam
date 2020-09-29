@@ -160,9 +160,15 @@ class StudentsController extends Controller
         
         $rules = [
             'std_name' => 'required|string|max:255',
+            'std_password' => 'required|string|min:8|max:8',
         ];
+
         $warning = [
-            "std_name.required" => "The Student Name is required ",
+            "std_name.required" => "The Student Name is required",
+            "std_password.required" => "The Student Password is required",
+            "std_password.min" => "The Student Password should be only 8 Character",
+            "std_password.max" => "The Student Password should be only 8 Character",
+
         ];
 
         $validatedData = $request->validate($rules, $warning);
