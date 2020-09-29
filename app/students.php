@@ -22,5 +22,10 @@ class students extends Model
     	return $this->belongsTo(User::class);
     }
 
+    public function Relation()
+    {
+        return $this->hasMany(Relation::class);
+    }
+
    
 }
