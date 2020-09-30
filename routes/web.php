@@ -57,7 +57,7 @@ Route::post('students/{std_id}', 'StudentsController@update')->name('student.upd
 
 Route::DELETE('students/{std_id}', 'StudentsController@destroy')->name('student.destroy');
 
-#####################################          Relation            ##########################################################
+#########################################          Relation            ##########################################################
 Route::get('{std_id}/relation', 'RelationController@index')->name('relation.index');
 
 

@@ -79,8 +79,8 @@
       <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
 
-  
-    
+
+
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
       <p>{{ $message }}</p>
@@ -117,7 +117,7 @@
                 @csrf
                 @method('DELETE')
 
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student ?')">Delete</button>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student Relation ?')">Delete</button>
               </form>
             </td>
           </tr>
@@ -131,6 +131,10 @@
         </div>
       </div>
     </div>
-    {{ $relations->links() }}
+    <div class="container">
+      <div class="row justify-content-center">
+        {{ $relations->links() }}
+      </div>
+    </div>
 </body>
 @endsection

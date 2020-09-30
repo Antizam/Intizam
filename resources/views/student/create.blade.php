@@ -165,6 +165,13 @@
                     </div>
                   </div>
               </form>
+              <div class="row">
+                <div class="col-lg-12 margin-tb">
+                  <div class="btn  mb1 black bg-white">
+                    <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -172,6 +179,5 @@
     </div>
   </div>
   </div>
-
 </body>
 @endsection

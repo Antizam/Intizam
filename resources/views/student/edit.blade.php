@@ -92,7 +92,7 @@
                                     <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
-                            </div><br />
+                            </div>
                             @endif
                             <h5>
                                 <div class="text-center font-weight-bold">{{ __('Edit Students') }}</div>

@@ -116,9 +116,9 @@
             <td>
               <form action="{{ route('student.destroy',$student->std_id) }}" method="POST">
                 {{--I add it here because, only here we can access the std_id  --}}
-                <a class="btn btn-info" href="{{ route('relation.create',$student->std_id) }}">Add a Relation</a>
+                <a class="btn btn-primary" href="{{ route('relation.create',$student->std_id) }}">Add a Relation</a>
 
-                <a class="btn btn-info" href="{{ route('relation.index',$student->std_id) }}">Relations</a>
+                <a class="btn btn-secondary" href="{{ route('relation.index',$student->std_id) }}">Relations</a>
 
                 <a class="btn btn-info" href="{{ route('student.show',$student->std_id) }}">Show</a>
 
@@ -136,6 +136,10 @@
         </tbody>
       </table>
     </div>
-    {{ $students->links() }}
+    <div class="container">
+      <div class="row justify-content-center">
+        {{ $students->links() }}
+      </div>
+    </div>
 </body>
 @endsection
