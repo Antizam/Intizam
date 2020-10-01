@@ -126,7 +126,7 @@
                                         <label for="relation_name" class="col-md-4 col-form-label text-md-right">{{ __('Relation Name') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="relation_name" type="text" class="form-control @error('relation_name') is-invalid @enderror" name="relation_name"  value="{{ $relation['relation_name'] }}" autocomplete="relation_name" autofocus>
+                                            <input id="relation_name" type="text" class="form-control @error('relation_name') is-invalid @enderror" name="relation_name" value="{{ $relation['relation_name'] }}" autocomplete="relation_name" autofocus>
 
                                             @error('relation_name')
                                             <span class="invalid-feedback" role="alert">
@@ -140,7 +140,7 @@
                                         <label for="relation_number" class="col-md-4 col-form-label text-md-right">{{ __('Relation Phone Number') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="relation_number" type="text" class="form-control @error('relation_number') is-invalid @enderror" name="relation_number"  value="{{ $relation['relation_number'] }}" autocomplete="relation_number" autofocus>
+                                            <input id="relation_number" type="text" class="form-control @error('relation_number') is-invalid @enderror" name="relation_number" value="{{ $relation['relation_number'] }}" autocomplete="relation_number" autofocus>
 
                                             @error('relation_number')
                                             <span class="invalid-feedback" role="alert">

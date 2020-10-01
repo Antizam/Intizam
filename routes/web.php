@@ -57,7 +57,7 @@ Route::post('students/{std_id}', 'StudentsController@update')->name('student.upd
 
 Route::DELETE('students/{std_id}', 'StudentsController@destroy')->name('student.destroy');
 
-#########################################          Relation            ##########################################################
+#####################################          Relation            ##########################################################
 Route::get('{std_id}/relation', 'RelationController@index')->name('relation.index');
 
 
@@ -66,7 +66,7 @@ Route::get('relation/{std_id}/create/', 'RelationController@create')->name('rela
 Route::post('{std_id}/relation/store/', 'RelationController@store')->name('relation.store');
 
 
-Route::get('relation/{relation_id}', 'RelationController@show')->name('relation.show');
+Route::get('/relation/{relation_id}', 'RelationController@show')->name('relation.show');
 
 Route::get('relation/{relation_id}/edit', 'RelationController@edit')->name('relation.edit');
 

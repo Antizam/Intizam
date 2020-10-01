@@ -84,7 +84,6 @@
       <div class="col-lg-12 margin-tb">
         <a class="btn btn-success" href="{{ route('student.create', Auth::user()->id) }}"> Create New Student</a>
       </div>
-
     </div>
 
     @if ($message = Session::get('success'))
@@ -115,9 +114,7 @@
 
             <td>
               <form action="{{ route('student.destroy',$student->std_id) }}" method="POST">
-                {{--I add it here because, only here we can access the std_id  --}}
-                <a class="btn btn-primary" href="{{ route('relation.create',$student->std_id) }}">Add a Relation</a>
-
+  
                 <a class="btn btn-secondary" href="{{ route('relation.index',$student->std_id) }}">Relations</a>
 
                 <a class="btn btn-info" href="{{ route('student.show',$student->std_id) }}">Show</a>

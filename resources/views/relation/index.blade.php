@@ -87,8 +87,14 @@
     </div>
     @endif
 
-
     <div class="row">
+      <div class="col-lg-12 margin-tb">
+        <a class="btn btn-success" href="{{ route('relation.create',  $student->std_id) }}"> Create New Relation</a>
+      </div>
+    </div>
+    
+    <div class="row">
+      <h3>{{ $student->std_name }}</h3>
       <table class="table table-bordered table-striped table-sm text-center">
         <thead class="thead-dark">
           <tr>

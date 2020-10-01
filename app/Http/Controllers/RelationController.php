@@ -21,7 +21,10 @@ class RelationController extends Controller
         $student = Students::find($std_id);
         $student = DB::table('relations')->orderBy('created_at', 'desc')->where('std_relation_id', $student->std_id)->paginate(6);
 
-        return view('relation.index', ['relations' => $student])
+        return view('relation.index', [
+            'student'=>Students::find($std_id),
+            'relations' => $student
+            ])
             ->with('i');
     }
 
@@ -33,7 +36,9 @@ class RelationController extends Controller
     public function create($std_id)
     {
         $student = Students::find($std_id);
-        return view('relation.create', compact('student'));
+        return view('relation.create',[
+            'student'=>Students::find($std_id)
+        ] ,compact('student'));
     }
 
     /**
@@ -96,7 +101,7 @@ class RelationController extends Controller
     public function edit($relation_id, Request $request, Relation $relation)
     {
         $relation = Relation::find($relation_id);
-        return view("relation.edit", compact("relation"));
+        return view("relation.edit",compact("relation"));
     }
 
     /**
