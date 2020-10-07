@@ -42,6 +42,13 @@ url as
 '/students/{student}'
 */
 
+Route::get('{id}/lstimes', 'LSTimeController@index')->name('lstime.index');
+
+Route::get('lstimes/edit/', 'LSTimeController@edit')->name('lstime.edit');
+
+Route::post('lstimes/edit/', 'LSTimeController@update')->name('lstime.update');
+
+#####################################          students            ##########################################################
 Route::get('{id}/students', 'StudentsController@index')->name('student.index');
 
 Route::get('students/create/', 'StudentsController@create')->name('student.create');
