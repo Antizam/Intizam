@@ -21,6 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('city')->default('city');
             $table->string('neighborhood')->default('neighborhood');
+            $table->time('sun')->default('00:00:00');
+            $table->time('mon')->default('00:00:00');
+            $table->time('tue')->default('00:00:00');
+            $table->time('wed')->default('00:00:00');
+            $table->time('thu')->default('00:00:00');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
