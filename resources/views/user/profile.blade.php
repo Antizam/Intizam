@@ -74,9 +74,9 @@
       <br>
       <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
       <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
-      <a href="#student"><i class="fas fa-users"></i> Students</a>
-      <a href="#Leaving_schedule"><i class="far fa-clock"></i> Leaving Schedule</a>
-      <a href="#Screening_table"><i class="fas fa-tv"></i> Screen Table</a>
+      <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
+      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
+      <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
       <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
       <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>

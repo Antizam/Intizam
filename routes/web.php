@@ -41,6 +41,9 @@ call as students.show
 url as
 '/students/{student}'
 */
+Route::get('{id}/ScreenTable', 'UserController@screenTable')->name('screenTable.screen');
+
+#####################################          LSTime            ##########################################################
 
 Route::get('{id}/lstimes', 'LSTimeController@index')->name('lstime.index');
 

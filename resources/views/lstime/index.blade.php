@@ -77,8 +77,8 @@
       <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
       <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
       <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
-      <a href="#Leaving_schedule"><i class="far fa-clock"></i> Leaving Schedule</a>
-      <a href="#Screening_table"><i class="fas fa-tv"></i> Screen Table</a>
+      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
+      <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
       <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
       <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
@@ -113,7 +113,7 @@
               <h2><br> Sunday </h2>
             </td>
             <td><br>
-            <h5>  {{ $user->sun->format('H:i') }}</h5>
+              <h5> {{ $user->sun->format('H:i') }}</h5>
             </td>
           </tr>
         </tbody>
@@ -130,8 +130,8 @@
               <h2> <br> Monday </h2>
             </td>
             <td><br>
-            <h5>  {{ $user->mon->format('H:i') }}</h5>
-        
+              <h5> {{ $user->mon->format('H:i') }}</h5>
+
             </td>
           </tr>
         </tbody>
@@ -150,7 +150,7 @@
               <h2> <br> Tuesday </h2>
             </td>
             <td><br>
-            <h5>  {{ $user->tue->format('H:i') }}</h5>
+              <h5> {{ $user->tue->format('H:i') }}</h5>
             </td>
 
           </tr>
@@ -169,7 +169,7 @@
               <h3> <br> Wednesday </h3>
             </td>
             <td><br>
-            <h5>  {{ $user->wed->format('H:i') }}</h5>
+              <h5> {{ $user->wed->format('H:i') }}</h5>
             </td>
 
           </tr>
@@ -188,7 +188,7 @@
               <h2><br>Thursday </h2>
             </td>
             <td><br>
-            <h5>{{ $user->thu->format('H:i') }}</h5>
+              <h5>{{ $user->thu->format('H:i') }}</h5>
             </td>
         </tbody>
       </table>

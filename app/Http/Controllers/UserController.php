@@ -221,4 +221,9 @@ class UserController extends Controller
 
         return redirect()->back()->with("success", "Password changed successfully !");
     }
+
+    public function ScreenTable($id, Request $request)
+    {
+        return view('screenTable.screen');
+    }
 }
