@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Validator;
 
 class LSTimeController extends Controller
 {
@@ -90,32 +91,44 @@ class LSTimeController extends Controller
      */
     public function update(Request $request, User $user)
     {
-/*
+        $user = User::find(Auth::user()->id);
+
         $rules = [
-                   'sun' => ['date_format:H:i', 'required'],
-                    'mon' => ['date_format:H:i', 'required'],
-                    'tue' => ['date_format:H:i', 'required'],
-                    'wed' => ['date_format:H:i', 'required'],
-                    'thu' => ['date_format:H:i', 'required'],
+            'sun' => ['date_format:H:i', 'required'],
+            'mon' => ['date_format:H:i', 'required'],
+            'tue' => ['date_format:H:i', 'required'],
+            'wed' => ['date_format:H:i', 'required'],
+            'thu' => ['date_format:H:i', 'required'],
         ];
         $warning = [
-
             "sun.required" => "The Sunday leaving time is required",
-            "sun.date_format" => "The Sunday leaving time should be only as this format hh:ii"
+            "sun.date_format" => "The Sunday leaving time should be only as this format hh:ii",
+
+            "mon.required" => "The Monday leaving time is required",
+            "mon.date_format" => "The Monday leaving time should be only as this format hh:ii",
+
+            "tue.required" => "The Tuesday leaving time is required",
+            "tue.date_format" => "The Tuesday leaving time should be only as this format hh:ii",
+
+            "wed.required" => "The Wednesday leaving time is required",
+            "wed.date_format" => "The Wednesday leaving time should be only as this format hh:ii",
+
+            "thu.required" => "The Thursday leaving time is required",
+            "thu.date_format" => "The Thursday leaving time should be only as this format hh:ii"
         ];
         $validatedData = $request->validate($rules, $warning);
-    
-                $user->sun = $request['sun'];
-                $user->mon = $request['mon'];
-                $user->tue = $request['tue'];
-                $user->wed = $request['wed'];
-                $user->thu = $request['thu'];
 
-                $user->save();
-                $request->session()->flash('success', 'Your Leaving Schedule been updated');
+        $user->sun = $request['sun'];
+        $user->mon = $request['mon'];
+        $user->tue = $request['tue'];
+        $user->wed = $request['wed'];
+        $user->thu = $request['thu'];
 
-                return redirect()->back();
-        */
+        $user->save();
+        $request->session()->flash('success', 'Your Leaving Schedule been updated');
+
+        return redirect()->back();
+        /*
         $user = User::find(Auth::user()->id);
 
         if ($user) {
@@ -163,6 +176,7 @@ class LSTimeController extends Controller
 
                 ]);
             }
+             
 
             if ($validate) {
                 $user->sun = $request['sun'];
@@ -180,7 +194,7 @@ class LSTimeController extends Controller
             }
         } else {
             $request->session()->flash('error', 'Whoops ,Something went wrong !');
-        }
+        }*/
     }
 
 
