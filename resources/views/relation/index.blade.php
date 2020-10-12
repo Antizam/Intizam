@@ -94,7 +94,6 @@
     </div>
 
     <div class="row">
-      <h3>{{ $student->std_name }}</h3>
       <table class="table table-bordered table-striped table-sm text-center">
         <thead class="thead-dark">
           <tr>

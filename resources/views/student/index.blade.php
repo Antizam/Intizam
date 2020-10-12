@@ -85,6 +85,7 @@
         <a class="btn btn-success" href="{{ route('student.create', Auth::user()->id) }}"> Create New Student</a>
       </div>
     </div>
+    <br>
 
     @if ($message = Session::get('success'))
     <div class="alert alert-success">

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\students;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -224,6 +226,11 @@ class UserController extends Controller
 
     public function ScreenTable($id, Request $request)
     {
-        return view('screenTable.screen');
+        $users = User::find($id);
+        $users = DB::table('students')->orderBy('created_at', 'desc')->where('user_id', $users->id)->paginate(6);
+
+        return view('screenTable.screen', ['students' => $users])
+            ->with('i');
+
     }
 }
