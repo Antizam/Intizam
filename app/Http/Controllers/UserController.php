@@ -234,10 +234,4 @@ class UserController extends Controller
             ->with('i');
     }
 
-    public function autoscreen($id, Request $request)
-    {
-        $users = User::find($id);
-        $users = DB::table('students')->orderBy('created_at', 'desc')->where('user_id', $users->id)->paginate(6);
-        return view('screenTable.admin', ['students' => $users]);
-    }
 }

@@ -43,11 +43,6 @@ url as
 */
 Route::get('{id}/ScreenTable', 'UserController@screenTable')->name('screenTable.screen');
 
-Route::get('/demo', 'UserController@autoscreen')->name('screenTable.auto');
-
-Route::get('/demo', function() {
-    return view('screenTable.admin');
-});
 #####################################          LSTime            ##########################################################
 
 Route::get('{id}/lstimes', 'LSTimeController@index')->name('lstime.index');

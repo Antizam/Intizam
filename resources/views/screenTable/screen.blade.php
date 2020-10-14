@@ -1,30 +1,10 @@
 @extends('layouts.app')
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script>
-  function fullScreenTgl() {
-
-    let doc = document,
-      elm = doc.documentElement;
-    if (elm.requestFullscreen) {
-      (!doc.fullscreenElement ? elm.requestFullscreen() : doc.exitFullscreen())
-    } else if (elm.mozRequestFullScreen) {
-      (!doc.mozFullScreen ? elm.mozRequestFullScreen() : doc.mozCancelFullScreen())
-    } else if (elm.msRequestFullscreen) {
-      (!doc.msFullscreenElement ? elm.msRequestFullscreen() : doc.msExitFullscreen())
-    } else if (elm.webkitRequestFullscreen) {
-      (!doc.webkitIsFullscreen ? elm.webkitRequestFullscreen() : doc.webkitCancelFullscreen())
-    } else {
-      console.log("Fullscreen support not detected.");
-    }
-
-  }
-</script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <script type="text/javascript">
   setTimeout(function() {
     location.reload();
-  }, 5000);
+  }, 30000);
 </script>
 
 <style>
@@ -66,9 +46,6 @@
     </div>
     @endif
 
-    <span class="btn btn-info">
-      <i class="fas fa-tv"></i> <input id="show_button" type="button" value="Full Screen" onclick="fullScreenTgl()">
-    </span>
     <br><br>
     <div id="res">
       <div class="container-fluid">
