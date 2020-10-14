@@ -19,6 +19,13 @@
 
   }
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script type="text/javascript">
+  setTimeout(function() {
+    location.reload();
+  }, 5000);
+</script>
 
 <style>
   .bg-colour1 {
@@ -48,7 +55,6 @@
 </style>
 
 @section('content')
-<meta http-equiv="refresh" content="10" />
 
 <body>
   <div class="container">
@@ -64,33 +70,34 @@
       <i class="fas fa-tv"></i> <input id="show_button" type="button" value="Full Screen" onclick="fullScreenTgl()">
     </span>
     <br><br>
+    <div id="res">
+      <div class="container-fluid">
+        <div class="row">
+          <table class="table table-bordered table-striped table-sm text-center">
+            <thead class="thead-dark">
+              <tr>
+                <th>No</th>
+                <th>Student Name</th>
+                <th>Relation</th>
+                <th>Relation Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($students as $student)
+              <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{$student->std_name}}</td>
 
-    <div class="container-fluid">
-      <div class="row">
-        <table class="table table-bordered table-striped table-sm text-center">
-          <thead class="thead-dark">
-            <tr>
-              <th>No</th>
-              <th>Student Name</th>
-              <th>Relation</th>
-              <th>Relation Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($students as $student)
-            <tr>
-              <td>{{ ++$i }}</td>
-              <td>{{$student->std_name}}</td>
+              </tr>
 
-            </tr>
-
-            @endforeach
-          </tbody>
-        </table>
-      </div>
-      <div class="container">
-        <div class="row justify-content-center">
-          {{ $students->links() }}
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            {{ $students->links() }}
+          </div>
         </div>
       </div>
     </div>

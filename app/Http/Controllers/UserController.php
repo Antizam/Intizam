@@ -100,8 +100,8 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required|email|unique:users,email,'.$user->id,
-                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
+                    'email' => 'required|email|unique:users,email,' . $user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,' . $user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -110,8 +110,8 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required|email|unique:users,email,'.$user->id,
-                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
+                    'email' => 'required|email|unique:users,email,' . $user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,' . $user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -120,8 +120,8 @@ class UserController extends Controller
 
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required|email|unique:users,email,'.$user->id,
-                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
+                    'email' => 'required|email|unique:users,email,' . $user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,' . $user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -129,8 +129,8 @@ class UserController extends Controller
             if (Auth::user()->email === $request['phone_number']) {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required|email|unique:users,email,'.$user->id,
-                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
+                    'email' => 'required|email|unique:users,email,' . $user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,' . $user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -138,16 +138,16 @@ class UserController extends Controller
             if (Auth::user()->email === $request['name']) {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required|email|unique:users,email,'.$user->id,
-                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
+                    'email' => 'required|email|unique:users,email,' . $user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,' . $user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
             } else {
                 $validate = $request->validate([
                     'name' => 'required', 'string', 'min:8',
-                    'email' => 'required|email|unique:users,email,'.$user->id,
-                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,'.$user->id,
+                    'email' => 'required|email|unique:users,email,' . $user->id,
+                    'phone_number' => 'required|digits:10', 'unique:users,phone_number,' . $user->id,
                     'city' => 'required', 'string', 'min:2', 'max:30',
                     'neighborhood' => 'required', 'string', 'min:2', 'max:30'
                 ]);
@@ -226,11 +226,18 @@ class UserController extends Controller
 
     public function ScreenTable($id, Request $request)
     {
+
         $users = User::find($id);
         $users = DB::table('students')->orderBy('created_at', 'desc')->where('user_id', $users->id)->paginate(6);
 
         return view('screenTable.screen', ['students' => $users])
             ->with('i');
+    }
 
+    public function autoscreen($id, Request $request)
+    {
+        $users = User::find($id);
+        $users = DB::table('students')->orderBy('created_at', 'desc')->where('user_id', $users->id)->paginate(6);
+        return view('screenTable.admin', ['students' => $users]);
     }
 }
