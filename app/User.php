@@ -15,6 +15,10 @@ class User extends Authenticatable
         return $this->hasMany(students::class);
     }
 
+    public function tect_supports()
+    {
+        return $this->hasMany(tect_supports::class);
+    }
 
 
     use Notifiable;

@@ -43,6 +43,8 @@ url as
 */
 Route::get('{id}/ScreenTable', 'UserController@screenTable')->name('screenTable.screen');
 
+Route::resource('Tech_Support', 'Tech_SupportController');
+
 #####################################          LSTime            ##########################################################
 
 Route::get('{id}/lstimes', 'LSTimeController@index')->name('lstime.index');
