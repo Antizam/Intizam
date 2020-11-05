@@ -67,6 +67,8 @@
 @section('content')
 
 <body>
+
+
   <div class="container">
     <div class="sidebar">
       <br>
@@ -80,66 +82,75 @@
     </div>
 
 
-
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-    @endif
-
-    <div class="row">
-      <div class="col-lg-12 margin-tb">
-        <a class="btn btn-success" href="{{ route('relation.create',  $student->std_id) }}"> Create New Relation</a>
-      </div>
-    </div>
-
-    <div class="row">
-      <table class="table table-bordered table-striped table-sm text-center">
-        <thead class="thead-dark">
-          <tr>
-            <th>No</th>
-            <th>The Relation</th>
-            <th>Relation Name</th>
-            <th>Relation Phone number</th>
-            <th width="280px">Action</th>
-          </tr>
-        </thead>
-        @foreach($relations as $relation)
-        <tbody>
-          <tr>
-            <td>{{ ++$i }}</td>
-            <td>{{$relation->relation}}</td>
-            <td>{{$relation->relation_name}}</td>
-            <td>{{$relation->relation_number}}</td>
-            <td>
-              <form action="{{ route('relation.destroy',$relation->relation_id) }}" method="POST">
+    <br><br>
+    <div class="container-fluid">
+      <section class="jumbotron text-center navbar-custom">
+        <div class="card card-body">
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p>{{ $message }}</p>
+          </div>
+          @endif
 
 
-                <a class="btn btn-info" href="{{ route('relation.show',$relation->relation_id) }}">Show</a>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 text-left margin-tb">
+                <a class="btn btn-success" href="{{ route('relation.create',  $student->std_id) }}"> Create New Relation</a>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <table class="table table-bordered table-striped table-sm text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>No</th>
+                  <th>The Relation</th>
+                  <th>Relation Name</th>
+                  <th>Relation Phone number</th>
+                  <th width="280px">Action</th>
+                </tr>
+              </thead>
+              @foreach($relations as $relation)
+              <tbody>
+                <tr>
+                  <td>{{ ++$i }}</td>
+                  <td>{{$relation->relation}}</td>
+                  <td>{{$relation->relation_name}}</td>
+                  <td>{{$relation->relation_number}}</td>
+                  <td>
+                    <form action="{{ route('relation.destroy',$relation->relation_id) }}" method="POST">
 
-                <a class="btn btn-primary" href="{{ route('relation.edit',$relation->relation_id) }}">Edit</a>
 
-                @csrf
-                @method('DELETE')
+                      <a class="btn btn-info" href="{{ route('relation.show',$relation->relation_id) }}">Show</a>
 
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student Relation ?')">Delete</button>
-              </form>
-            </td>
-          </tr>
+                      <a class="btn btn-primary" href="{{ route('relation.edit',$relation->relation_id) }}">Edit</a>
 
-          @endforeach
-        </tbody>
-      </table>
-      <div class="col-lg-12 margin-tb">
-        <div class="btn  mb1 black bg-white">
-          <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
+                      @csrf
+                      @method('DELETE')
+
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student Relation ?')">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+
+                @endforeach
+              </tbody>
+            </table>
+            <div class="col-lg-12 margin-tb">
+              <div class="btn  mb1 black bg-white">
+                <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row justify-content-center">
+              {{ $relations->links() }}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row justify-content-center">
-        {{ $relations->links() }}
-      </div>
+      </section>
     </div>
 </body>
 @endsection

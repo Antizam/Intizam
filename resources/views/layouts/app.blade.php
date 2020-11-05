@@ -12,6 +12,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+
+    <!-- Mine -->
+    <script src="https://use.fontawesome.com/aa3bfcc7ab.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -30,6 +34,7 @@
             text-decoration: none;
         }
     </style>
+
 </head>
 
 <body>
@@ -102,6 +107,7 @@
     </div>
 </body>
 <fotter class=" footer fixed-bottom navbar-custom">
+
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright: Intizam
     </div>

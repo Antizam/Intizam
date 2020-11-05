@@ -4,6 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <style>
   .sidebar {
     height: 100%;
@@ -39,6 +40,10 @@
 
   .bg-colour1 {
     background-color: #0c8676 !important;
+  }
+
+  .bg-colour2 {
+    background-color: #ffffff !important;
   }
 
   .btn-link1 {
@@ -80,10 +85,8 @@
       <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
       <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
       <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
+      <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
-
-
 
 
     @if ($message = Session::get('success'))
@@ -92,106 +95,77 @@
     </div>
     @endif
 
-    <div class="row">
-      <div class="col-lg-12 margin-tb">
-        <a class="btn btn-info" href="{{ route('lstime.edit', Auth::user()->id) }}">Edit Leaving Schedule</a>
-      </div>
-    </div>
 
-
-    <br>
-
-    <div class="row">
-      <table class="table table-bordered table-striped table-sm text-center">
-        <tr class="table-dark text-dark">
-          <td> <strong> Day </strong> </td>
-          <td> <strong> Time </strong> </td>
-        </tr>
-        <tbody>
-          <tr>
-            <td>
-              <h2><br> Sunday </h2>
-            </td>
-            <td><br>
-              <h5> {{ $user->sun->format('H:i') }}</h5>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table table-bordered table-striped table-sm text-center">
-
-        <tr class="table-success">
-          <td></td>
-          <td></td>
-        </tr>
-        <tbody>
-          <tr>
-            <td>
-              <h2> <br> Monday </h2>
-            </td>
-            <td><br>
-              <h5> {{ $user->mon->format('H:i') }}</h5>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-striped table-sm text-center">
-
-        <tr class="table-primary">
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tbody>
-          <tr>
-            <td>
-              <h2> <br> Tuesday </h2>
-            </td>
-            <td><br>
-              <h5> {{ $user->tue->format('H:i') }}</h5>
-            </td>
-
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-striped table-sm text-center">
-        <tr class="table-warning">
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tbody>
-          <tr>
-            <td>
-              <h3> <br> Wednesday </h3>
-            </td>
-            <td><br>
-              <h5> {{ $user->wed->format('H:i') }}</h5>
-            </td>
-
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="table table-bordered table-striped table-sm text-center">
-        <tr class="table-active">
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tbody>
-          <tr>
-            <td>
-              <h2><br>Thursday </h2>
-            </td>
-            <td><br>
-              <h5>{{ $user->thu->format('H:i') }}</h5>
-            </td>
-        </tbody>
-      </table>
+    <br><br><br>
+    <div class="container-fluid">
+      <section class="jumbotron text-center navbar-custom">
+        <div class="card card-body">
+          <span style="font-size: 40px; color:white;">
+            <i class="fas fa-calendar-week"></i>
+          </span>
+          <br>
+          <table class="table table-hover bg-colour2">
+            <h4><strong>{{ __('Leaving Schedule') }}</strong></h4>
+            <br>
+            <thead>
+              <tr>
+                <th scope="col"> Day of Week </th>
+                <th scope="col"> </th>
+                <th scope="col"> </th>
+                <th scope="col-right">Leaving Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Sunday<br><br></th>
+                <td> </td>
+                <td> </td>
+                <th scope="col-right">
+                  <h5> {{ $user->sun->format('H:i') }}</h5>
+                </th>
+              </tr>
+              <tr>
+                <th scope="row">Monday<br><br></th>
+                <td> </td>
+                <td> </td>
+                <th scope="col-right">
+                  <h5> {{ $user->mon->format('H:i') }}</h5>
+                </th>
+              </tr>
+              <tr>
+                <th scope="row">Tuesday<br><br></th>
+                <td> </td>
+                <td> </td>
+                <th scope="col-right">
+                  <h5> {{ $user->tue->format('H:i') }}</h5>
+                </th>
+              </tr>
+              <tr>
+                <th scope="row">Wednesday<br><br></th>
+                <td> </td>
+                <td> </td>
+                <th scope="col-right">
+                  <h5> {{ $user->wed->format('H:i') }}</h5>
+                </th>
+              </tr>
+              <tr>
+                <th scope="row">Thursday<br><br></th>
+                <td> </td>
+                <td> </td>
+                <th scope="col-right">
+                  <h5> {{ $user->thu->format('H:i') }}</h5>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-12 margin-tb">
+            <a class="btn btn-info" href="{{ route('lstime.edit', Auth::user()->id) }}">Edit Leaving Schedule</a>
+          </div>
+        </div>
+      </section>
     </div>
 </body>
 @endsection

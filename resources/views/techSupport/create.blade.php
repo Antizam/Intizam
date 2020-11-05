@@ -77,53 +77,57 @@
       <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
       <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
       <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
+      <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
 
-
+    <br><br>
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card w-100 bg-colour1">
-            <div class="card-body">
+      <section class="jumbotron text-center navbar-custom">
+        <div class="container">
+          <div class="card card-body">
 
-              @if ($errors->any())
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              </div><br />
-              @endif
-              <h5>
-                <div class="text-center font-weight-bold">{{ __('create new Students') }}</div>
-              </h5>
-              <form method="post" action="{{ route('Tech_Support.store') }}">
-                {{csrf_field()}}
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
 
+            <h5>
+              <div class="text-center font-weight-bold">
+                <h4><strong>{{ __('Create a query') }}</strong></h4>
+              </div>
+            </h5>
 
-                <div class="card-body">
-                  @if(session('success'))
-                  <div class="alert alert-success" role="alert">
-                    {{session('success')}}
-                    @endif
-                  </div>
+            <form method="post" action="{{ route('Tech_Support.store') }}">
+              {{csrf_field()}}
 
-
-                  <div class="form-group row">
-                    <label> title </label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="title" name="title">
-                    @error('title')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                  </div>
+              <div class="card-body">
+                @if(session('success'))
+                <div class="alert alert-success" role="alert">
+                  {{session('success')}}
+                  @endif
                 </div>
 
                 <div class="form-group row">
-                  <label> Description </label>
+                  <label>
+                    <h4>Title</h4>
+                  </label>
+                  <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="title" name="title">
+                  @error('title')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+
+                <div class="form-group row">
+                  <label>
+                    <h4>Description</h4>
+                  </label>
                   <input type="text" class="form-control @error('description') is-invalid @enderror" placeholder="description" name="description">
                   @error('description')
                   <span class="invalid-feedback" role="alert">
@@ -131,27 +135,32 @@
                   </span>
                   @enderror
                 </div>
-            </div>
-
-            <div class="container">
-              <div class="row">
-                <div class="col-sm text-justify text-left1">
-                  <button type="submit" class="btn btn-primary mb-4" href="#">New Student</button>
+              </div>
+              <br>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm text-center">
+                    <button type="submit" class="btn btn-primary mb-4" href="#">Submit a query</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            </form>
-            <div class="row">
-              <div class="col-lg-12 margin-tb">
-                <div class="btn  mb1 black bg-white">
-                  <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
-                </div>
+          </div>
+          </form>
+
+          <div class="row">
+            <div class="col-sm text-left">
+              <div class="btn  mb1 black bg-white">
+                <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
               </div>
             </div>
           </div>
+
         </div>
-      </div>
+      </section>
     </div>
+  </div>
+  </div>
+  </div>
   </div>
   </div>
   </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 <style>
   .sidebar {
     height: 100%;
@@ -73,11 +73,13 @@
       <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
       <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
       <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
-      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
+      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="fas fa-clock"></i> Leaving Schedule</a>
       <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
       <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
       <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
+
+    <h2>Main page</h2>
 
 </body>
 @endsection

@@ -78,11 +78,12 @@
       <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
       <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
       <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
+      <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
 
 
     <div class="container">
+      <br><br><br>
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card w-100 bg-colour1">
@@ -94,7 +95,9 @@
               </div>
               @endif
               <h5>
-                <div class="text-center font-weight-bold">{{ __('Profile') }}</div>
+                <div class="text-center font-weight-bold">
+                  <h5><strong>{{ __('Profile') }}</strong></h5>
+                </div>
               </h5>
               <form method="POST" action="{{ route('register') }}">
                 @csrf

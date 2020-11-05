@@ -76,68 +76,77 @@
       <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
       <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
       <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
+      <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
     </div>
 
+    <br><br>
+    <div class="container-fluid">
+      <section class="jumbotron text-center navbar-custom">
+        <div class="card card-body">
 
-    <div class="row">
-      <div class="col-lg-12 margin-tb">
-        <a class="btn btn-success" href="{{ route('student.create', Auth::user()->id) }}"> Create New Student</a>
-      </div>
-    </div>
-    <br>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 text-left margin-tb">
+                <a class="btn btn-success" href="{{ route('student.create', Auth::user()->id) }}"> Create New Student</a>
+              </div>
+            </div>
+          </div>
+          <br>
 
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-    @endif
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p>{{ $message }}</p>
+          </div>
+          @endif
 
 
-    <div class="row">
-      <table class="table table-bordered table-striped table-sm text-center">
-        <thead class="thead-dark">
-          <tr>
-            <th>No</th>
-            <th>Student ID</th>
-            <th>Student Name</th>
-            <th>Student Email</th>
-            <th width="280px">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($students as $student)
-          <tr>
-            <td>{{ ++$i }}</td>
-            <td>{{$student->std_id}}</td>
-            <td>{{$student->std_name}}</td>
-            <td>{{$student->std_email}}</td>
+          <div class="row">
+            <table class="table table-bordered table-striped table-sm text-center">
+              <thead class="thead-dark">
+                <tr>
+                  <th>No</th>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>Student Email</th>
+                  <th width="280px">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($students as $student)
+                <tr>
+                  <td>{{ ++$i }}</td>
+                  <td>{{$student->std_id}}</td>
+                  <td>{{$student->std_name}}</td>
+                  <td>{{$student->std_email}}</td>
 
-            <td>
-              <form action="{{ route('student.destroy',$student->std_id) }}" method="POST">
+                  <td>
+                    <form action="{{ route('student.destroy',$student->std_id) }}" method="POST">
 
-                <a class="btn btn-secondary" href="{{ route('relation.index',$student->std_id) }}">Relations</a>
+                      <a class="btn btn-secondary" href="{{ route('relation.index',$student->std_id) }}">Relations</a>
 
-                <a class="btn btn-info" href="{{ route('student.show',$student->std_id) }}">Show</a>
+                      <a class="btn btn-info" href="{{ route('student.show',$student->std_id) }}">Show</a>
 
-                <a class="btn btn-primary" href="{{ route('student.edit',$student->std_id) }}">Edit</a>
+                      <a class="btn btn-primary" href="{{ route('student.edit',$student->std_id) }}">Edit</a>
 
-                @csrf
-                @method('DELETE')
+                      @csrf
+                      @method('DELETE')
 
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student ?')">Delete</button>
-              </form>
-            </td>
-          </tr>
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student ?')">Delete</button>
+                    </form>
+                  </td>
+                </tr>
 
-          @endforeach
-        </tbody>
-      </table>
-    </div>
-    <div class="container">
-      <div class="row justify-content-center">
-        {{ $students->links() }}
-      </div>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          <div class="container">
+            <div class="row justify-content-center">
+              {{ $students->links() }}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 </body>
 @endsection

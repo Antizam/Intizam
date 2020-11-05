@@ -78,7 +78,7 @@
             <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
             <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
             <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-            <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
+            <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
         </div>
 
 
