@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <style>
   .sidebar {
