@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Intizam</title>
 
-  <script src="https://use.fontawesome.com/252bd1c412.js"></script>
   <link rel="stylesheet" href="{{ asset('css/app.css')  }}">
+  <script src="https://use.fontawesome.com/252bd1c412.js"></script>
   <!-- <link rel="stylesheet" href="{{ asset('css/_variables.css')  }}"> -->
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
 
   <style>
     .navbar-custom {
@@ -19,37 +18,51 @@
     }
 
     .btn-link1 {
-      font-size: 100%;
-      color: #ffffff;
+      font-size: 130%;
+      color: #404040;
       text-decoration: none;
+    }
+
+    .txt-custom1 {
+      color: #262626;
+    }
+
+    body {
+      background-image: url('/img/mainpage.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: auto;
     }
   </style>
 
 </head>
 
+
+
+<!-- Header -->
+<header>
+
+  <!-- Navbar content -->
+  <div class="container-fluid">
+    <br><br>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="col align-self-end">
+      </div>
+      <h4><a class="btn btn-link1" href="{{ url('/') }}">Home</a></h4>
+    </nav>
+  </div>
+</header>
+
+
 <!-- Body -->
 
 <body>
 
-  <!-- Header -->
-  <header>
-
-    <<br><br><br><br><br><br><br><br><br>
-
-      <!-- Navbar content -->
-      <nav class="navbar navbar-expand-sm navbar-custom fixed-top justify-content-end">
-        <nav class="navbar navbar-expand-sm navbar-light bg-custom">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="btn btn-link1" href="{{ url('/') }}">Home</a>
-        </nav>
-      </nav>
-  </header>
-
-  <!-- Card -->
-
   <div class="container">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="row justify-content-md-center">
       <div class="row">
         <div class="col-7">
@@ -89,14 +102,18 @@
 
 </body>
 
+
+</body>
+
 <!-- Footer -->
 
-<fotter class=" footer fixed-bottom navbar-custom">
+<fotter class=" footer fixed-bottom">
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright: Intizam
+  <div class="footer-copyright text-center py-3">
+    <h5>All rights reserved for <strong>Intizam</strong> © 2020</h5>
   </div>
   <!-- Copyright -->
-  </footer>
-  <!-- End Footer -->
+</fotter>
+<!-- End Footer -->
 
-  </html>
+</html>

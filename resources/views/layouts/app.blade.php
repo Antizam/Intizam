@@ -13,10 +13,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-
-    <!-- Mine -->
-    <script src="https://use.fontawesome.com/aa3bfcc7ab.js"></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -29,9 +25,16 @@
         }
 
         .btn-link1 {
-            font-size: 100%;
-            color: #ffffff;
+            font-size: 130%;
+            color: #404040;
             text-decoration: none;
+        }
+
+        body {
+            background-image: url('/img/original.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: auto;
         }
     </style>
 
@@ -39,14 +42,21 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-custom shadow-sm">
-            <div class="container-fluid ">
-                <a class="col-6 btn btn-link1" href="{{ url('/') }}">
-                    {{ config('Intizam', 'Intizam') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <!-- Navbar content -->
+        <div class="container-fluid">
+            <br><br>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <li class="btn">
+                    <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+                </li>
+
+                <div class="col align-self-end">
+                </div>
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -58,12 +68,12 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
-                            <a class="btn btn-link1" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <li class="btn">
+                            <h4><a class="btn btn-link1" href="{{ route('login') }}">{{ __('Login') }}</a></h4>
                         </li>
                         @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="btn btn-link1" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <li class="btn">
+                            <h4><a class="btn btn-link1" href="{{ route('register') }}">{{ __('Register') }}</a></h4>
                         </li>
                         @endif
                         @else
@@ -98,7 +108,7 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+        </div>
         </nav>
 
         <main class="py-4">
@@ -106,12 +116,15 @@
         </main>
     </div>
 </body>
-<fotter class=" footer fixed-bottom navbar-custom">
+<!-- Footer -->
 
+<fotter class=" footer fixed-bottom">
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright: Intizam
+    <div class="footer-copyright text-center py-3">
+        <h5>All rights reserved for <strong>Intizam</strong> © 2020</h5>
     </div>
     <!-- Copyright -->
-    </footer>
+</fotter>
+<!-- End Footer -->
 
 </html>

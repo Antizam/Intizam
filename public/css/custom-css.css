@@ -1,0 +1,11 @@
+.main_img{
+background-image: url('../img/Intizam3.png');
+background-size: full;
+width: 100%;
+height: 100%;
+background-repeat: no-repeat;
+background-position: center;
+margin: 0;
+padding: 0;
+
+}
