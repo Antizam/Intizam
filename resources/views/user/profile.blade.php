@@ -11,7 +11,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #0c8676;
+    background-color: #333333;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 50px;
@@ -34,7 +34,7 @@
   }
 
   .bg-colour1 {
-    background-color: #0c8676 !important;
+    background-color: #e3eaec !important;
   }
 
   .btn-link1 {
@@ -69,109 +69,126 @@
 @section('content')
 
 <body>
+  <div class="wrapper d-flex align-items-stretch">
+    <nav class="sidebar">
+      <li class="btn">
+        <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+      </li>
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
+        </li>
+        <li>
+          <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user mr-3"></i> Profile</a>
+        </li>
+        <li>
+          <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users mr-3"></i> Students</a>
+        </li>
+        <li>
+          <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="fas fa-clock mr-3"></i> Leaving Schedule</a>
+        </li>
+        <li>
+          <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv mr-3"></i> Screen Table</a>
+        </li>
+        <li>
+          <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle mr-3"></i> Technical Support</a>
+        </li>
+        <li>
+          <a href="#Settings"><i class="fas fa-cog mr-3"></i> Settings</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
   <div class="container">
-    <div class="sidebar">
-      <br>
-      <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
-      <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
-      <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
-      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
-      <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
-      <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
-    </div>
+    <br><br><br>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card w-100 bg-colour1">
+          <div class="card-body">
 
-
-    <div class="container">
-      <br><br><br>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card w-100 bg-colour1">
-            <div class="card-body">
-
-              @if (session('danger'))
-              <div class="alert alert-danger">
-                {{ session('danger') }}
-              </div>
-              @endif
-              <h5>
-                <div class="text-center font-weight-bold">
-                  <h5><strong>{{ __('Profile') }}</strong></h5>
-                </div>
-              </h5>
-              <form method="POST" action="{{ route('register') }}">
-                @csrf
-
-                <div class="form-group row">
-                  <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                  <div class="col-md-6">
-                    <label for="name"></label>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user['name'] }}" readonly required autocomplete="name" autofocus>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
-
-                  <div class="col-md-6">
-                    <input id="phone" type="tel" name="phone" pattern="[0-9]{10}" class="form-control @error('number') is-invalid @enderror" value="{{ $user['phone_number'] }}" readonly>
-
-                    @error('number')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                  <div class="col-md-6">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user['email'] }}" readonly required autocomplete="email">
-
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-
-                  <div class="col-md-6">
-                    <label for="city"></label>
-                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user['city'] }}" readonly required autocomplete="city" autofocus>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="neighborhood" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
-
-                  <div class="col-md-6">
-                    <label for="neighborhood"></label>
-                    <input id="neighborhood" type="text" class="form-control @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ $user['neighborhood'] }}" readonly required autocomplete="neighborhood" autofocus>
-                  </div>
-                </div>
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm text-justify text-left1">
-                      <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.edit')}}">{{ __('Edit Profile') }}</a>‏
-                      <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.password')}}">{{ __('Change Password') }}</a>
-                    </div>
-                  </div>
-                </div>
-              </form>
+            @if (session('danger'))
+            <div class="alert alert-danger">
+              {{ session('danger') }}
             </div>
+            @endif
+            <h5>
+              <div class="text-center font-weight-bold">
+                <h5><strong>{{ __('Profile') }}</strong></h5>
+              </div>
+            </h5>
+            <form method="POST" action="{{ route('register') }}">
+              @csrf
+
+              <div class="form-group row">
+                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                <div class="col-md-6">
+                  <label for="name"></label>
+                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user['name'] }}" readonly required autocomplete="name" autofocus>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
+
+                <div class="col-md-6">
+                  <input id="phone" type="tel" name="phone" pattern="[0-9]{10}" class="form-control @error('number') is-invalid @enderror" value="{{ $user['phone_number'] }}" readonly>
+
+                  @error('number')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                <div class="col-md-6">
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user['email'] }}" readonly required autocomplete="email">
+
+                  @error('email')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+
+                <div class="col-md-6">
+                  <label for="city"></label>
+                  <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $user['city'] }}" readonly required autocomplete="city" autofocus>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="neighborhood" class="col-md-4 col-form-label text-md-right">{{ __('Neighborhood') }}</label>
+
+                <div class="col-md-6">
+                  <label for="neighborhood"></label>
+                  <input id="neighborhood" type="text" class="form-control @error('neighborhood') is-invalid @enderror" name="neighborhood" value="{{ $user['neighborhood'] }}" readonly required autocomplete="neighborhood" autofocus>
+                </div>
+              </div>
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm text-justify text-left1">
+                    <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.edit')}}">{{ __('Edit Profile') }}</a>‏
+                    <a type="submit" class="btn btn-primary mb-4" href="{{ route('user.password')}}">{{ __('Change Password') }}</a>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
 </body>

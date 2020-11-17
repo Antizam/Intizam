@@ -81,7 +81,7 @@
                 <h4><a class="btn btn-link1" href="{{ route('login') }}">Login</a></h4>
                 @if (Route::has('register'))
 
-
+            </li>
             <li class="btn">
                 <h4><a class="btn btn-link1 " href="{{ route('register') }}">Register</a></h4>
                 @endif

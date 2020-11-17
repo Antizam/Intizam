@@ -11,7 +11,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #0c8676;
+    background-color: #333333;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 50px;
@@ -67,90 +67,107 @@
 @section('content')
 
 <body>
+  <div class="wrapper d-flex align-items-stretch">
+    <nav class="sidebar">
+      <li class="btn">
+        <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+      </li>
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
+        </li>
+        <li>
+          <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user mr-3"></i> Profile</a>
+        </li>
+        <li>
+          <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users mr-3"></i> Students</a>
+        </li>
+        <li>
+          <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="fas fa-clock mr-3"></i> Leaving Schedule</a>
+        </li>
+        <li>
+          <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv mr-3"></i> Screen Table</a>
+        </li>
+        <li>
+          <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle mr-3"></i> Technical Support</a>
+        </li>
+        <li>
+          <a href="#Settings"><i class="fas fa-cog mr-3"></i> Settings</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
 
+  <br><br>
   <div class="container">
-    <div class="sidebar">
-      <br>
-      <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
-      <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
-      <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
-      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
-      <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
-      <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
-    </div>
+    <section class="jumbotron text-center navbar-custom">
+      <div class="card card-body">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+          <p>{{ $message }}</p>
+        </div>
+        @endif
 
 
-    <br><br>
-    <div class="container-fluid">
-      <section class="jumbotron text-center navbar-custom">
-        <div class="card card-body">
-          @if ($message = Session::get('success'))
-          <div class="alert alert-success">
-            <p>{{ $message }}</p>
-          </div>
-          @endif
-
-
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12 text-left margin-tb">
-                <a class="btn btn-success" href="{{ route('relation.create',  $student->std_id) }}"> Create New Relation</a>
-              </div>
-            </div>
-          </div>
-          <br>
+        <div class="container">
           <div class="row">
-            <table class="table table-bordered table-striped table-sm text-center">
-              <thead class="thead-dark">
-                <tr>
-                  <th>No</th>
-                  <th>The Relation</th>
-                  <th>Relation Name</th>
-                  <th>Relation Phone number</th>
-                  <th width="280px">Action</th>
-                </tr>
-              </thead>
-              @foreach($relations as $relation)
-              <tbody>
-                <tr>
-                  <td>{{ ++$i }}</td>
-                  <td>{{$relation->relation}}</td>
-                  <td>{{$relation->relation_name}}</td>
-                  <td>{{$relation->relation_number}}</td>
-                  <td>
-                    <form action="{{ route('relation.destroy',$relation->relation_id) }}" method="POST">
-
-
-                      <a class="btn btn-info" href="{{ route('relation.show',$relation->relation_id) }}">Show</a>
-
-                      <a class="btn btn-primary" href="{{ route('relation.edit',$relation->relation_id) }}">Edit</a>
-
-                      @csrf
-                      @method('DELETE')
-
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student Relation ?')">Delete</button>
-                    </form>
-                  </td>
-                </tr>
-
-                @endforeach
-              </tbody>
-            </table>
-            <div class="col-lg-12 margin-tb">
-              <div class="btn  mb1 black bg-white">
-                <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row justify-content-center">
-              {{ $relations->links() }}
+            <div class="col-lg-12 text-left margin-tb">
+              <a class="btn btn-success" href="{{ route('relation.create',  $student->std_id) }}"> Create New Relation</a>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+        <br>
+        <div class="row">
+          <table class="table table-bordered table-striped table-sm text-center">
+            <thead class="thead-dark">
+              <tr>
+                <th>No</th>
+                <th>The Relation</th>
+                <th>Relation Name</th>
+                <th>Relation Phone number</th>
+                <th width="280px">Action</th>
+              </tr>
+            </thead>
+            @foreach($relations as $relation)
+            <tbody>
+              <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{$relation->relation}}</td>
+                <td>{{$relation->relation_name}}</td>
+                <td>{{$relation->relation_number}}</td>
+                <td>
+                  <form action="{{ route('relation.destroy',$relation->relation_id) }}" method="POST">
+
+
+                    <a class="btn btn-info" href="{{ route('relation.show',$relation->relation_id) }}">Show</a>
+
+                    <a class="btn btn-primary" href="{{ route('relation.edit',$relation->relation_id) }}">Edit</a>
+
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student Relation ?')">Delete</button>
+                  </form>
+                </td>
+              </tr>
+
+              @endforeach
+            </tbody>
+          </table>
+          <div class="col-lg-12 margin-tb">
+            <div class="btn  mb1 black bg-white">
+              <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            {{ $relations->links() }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </body>
 @endsection

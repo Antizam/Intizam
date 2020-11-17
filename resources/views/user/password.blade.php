@@ -11,7 +11,7 @@
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #0c8676;
+        background-color: #333333;
         overflow-x: hidden;
         /* Disable horizontal scroll */
         padding-top: 50px;
@@ -67,100 +67,119 @@
 @section('content')
 
 <body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav class="sidebar">
+            <li class="btn">
+                <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+            </li>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
+                </li>
+                <li>
+                    <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user mr-3"></i> Profile</a>
+                </li>
+                <li>
+                    <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users mr-3"></i> Students</a>
+                </li>
+                <li>
+                    <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="fas fa-clock mr-3"></i> Leaving Schedule</a>
+                </li>
+                <li>
+                    <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv mr-3"></i> Screen Table</a>
+                </li>
+                <li>
+                    <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle mr-3"></i> Technical Support</a>
+                </li>
+                <li>
+                    <a href="#Settings"><i class="fas fa-cog mr-3"></i> Settings</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <br><br>
     <div class="container">
-        <div class="sidebar">
-            <br>
-            <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
-            <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
-            <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
-            <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
-            <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
-            <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-            <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
-        </div>
+        <br><br><br>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card w-100 bg-colour1">
+                    <div class="card-body">
+                        <div style="font-size:25" class="text-center font-weight-bold">
+                            <h5><strong>{{ __('Change Passsword') }}</strong></h5>
+                        </div>
+                        <br>
 
-        <br><br>
-        <div class="container">
-            <br><br><br>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card w-100 bg-colour1">
-                        <div class="card-body">
-                            <div style="font-size:25" class="text-center font-weight-bold">
-                                <h5><strong>{{ __('Change Passsword') }}</strong></h5>
+                        <div class="panel-body">
+                            @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
                             </div>
-                            <br>
-
-                            <div class="panel-body">
-                                @if (session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                                @endif
-                                @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                                @endif
-
-                                <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
-                                    {{ csrf_field() }}
-
-
-                                    <div class="form-group row{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                                        <label for="new-password" class="col-md-4 col-form-label text-md-right">Current Password</label>
-
-                                        <div class="col-md-6">
-                                            <input id="current-password" type="password" class="form-control" name="current-password" required>
-
-                                            @if ($errors->has('current-password'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('current-password') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                        <label for="new-password" class="col-md-4 col-form-label text-md-right">New Password</label>
-
-                                        <div class="col-md-6">
-                                            <input id="new-password" type="password" class="form-control" name="new-password" required>
-
-                                            @if ($errors->has('new-password'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('new-password') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="new-password-confirm" class="col-md-4 col-form-label text-md-right">Confirm New Password</label>
-
-                                        <div class="col-md-6">
-                                            <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm text-justify text-left1">
-                                                <button type="submit" class="btn btn-primary">
-                                                    {{ __('Confirm') }}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </form>
+                            @endif
+                            @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
                             </div>
+                            @endif
+
+                            <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
+                                {{ csrf_field() }}
+
+
+                                <div class="form-group row{{ $errors->has('current-password') ? ' has-error' : '' }}">
+                                    <label for="new-password" class="col-md-4 col-form-label text-md-right">Current Password</label>
+
+                                    <div class="col-md-6">
+                                        <input id="current-password" type="password" class="form-control" name="current-password" required>
+
+                                        @if ($errors->has('current-password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('current-password') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group row{{ $errors->has('new-password') ? ' has-error' : '' }}">
+                                    <label for="new-password" class="col-md-4 col-form-label text-md-right">New Password</label>
+
+                                    <div class="col-md-6">
+                                        <input id="new-password" type="password" class="form-control" name="new-password" required>
+
+                                        @if ($errors->has('new-password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('new-password') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="new-password-confirm" class="col-md-4 col-form-label text-md-right">Confirm New Password</label>
+
+                                    <div class="col-md-6">
+                                        <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm text-justify text-left1">
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ __('Confirm') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 </body>
 @endsection

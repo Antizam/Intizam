@@ -1,87 +1,115 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<style>
-  .sidebar {
-    height: 100%;
-    /* Full-height: remove this if you want "auto" height */
-    width: 15%;
-    /* Set the width of the sidebar */
-    position: fixed;
-    /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #0c8676;
-    overflow-x: hidden;
-    /* Disable horizontal scroll */
-    padding-top: 50px;
-  }
-
-  /* The navigation menu links */
-  .sidebar a {
-    padding: 15px 15px 15px 16px;
-    text-decoration: none;
-    font-size: 16px;
-    color: white;
-    display: block;
-  }
-
-  /* When you mouse over the navigation links, change their color */
-  .sidebar a:hover {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .bg-colour1 {
-    background-color: #0c8676 !important;
-  }
-
-  .btn-link1 {
-    font-size: 100%;
-    color: #ffffff;
-    text-decoration: none;
-  }
-
-  .sidebar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-
-  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-  @media screen and (max-height: 400px) {
+<head>
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <style>
     .sidebar {
-      padding-top: 15px;
+      height: 100%;
+      /* Full-height: remove this if you want "auto" height */
+      width: 15%;
+      /* Set the width of the sidebar */
+      position: fixed;
+      /* Fixed Sidebar (stay in place on scroll) */
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #333333;
+      overflow-x: hidden;
+      /* Disable horizontal scroll */
+      padding-top: 50px;
     }
 
+    /* The navigation menu links */
     .sidebar a {
-      font-size: 18px;
+      padding: 15px 15px 15px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      color: white;
+      display: block;
     }
-  }
 
-  .text-left1 {
-    padding-left: 35% !important;
-  }
-</style>
+    /* When you mouse over the navigation links, change their color */
+    .sidebar a:hover {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+    }
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+    @media screen and (max-height: 400px) {
+      .sidebar {
+        padding-top: 15px;
+      }
+
+      .sidebar a {
+        font-size: 18px;
+      }
+    }
+
+    .bg-colour1 {
+      background-color: #0c8676 !important;
+    }
+
+    .btn-link1 {
+      font-size: 130%;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .text-left1 {
+      padding-left: 35% !important;
+    }
+
+    .font-custom {
+      font-size: 30px;
+      font-family: "Times New Roman", Times, serif;
+    }
+  </style>
+</head>
 
 @section('content')
 
 <body>
-  <div class="container">
-    <div class="sidebar">
-      <br>
-      <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
-      <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
-      <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
-      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="fas fa-clock"></i> Leaving Schedule</a>
-      <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
-      <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle"></i> Technical Support</a>
-    </div>
+  <div class="wrapper d-flex align-items-stretch">
+    <nav class="sidebar">
+      <li class="btn">
+        <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+      </li>
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
+        </li>
+        <li>
+          <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user mr-3"></i> Profile</a>
+        </li>
+        <li>
+          <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users mr-2"></i> Students</a>
+        </li>
+        <li>
+          <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="fas fa-clock mr-3"></i> Leaving Schedule</a>
+        </li>
+        <li>
+          <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv mr-3"></i> Screen Table</a>
+        </li>
+        <li>
+          <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle mr-3"></i> Technical Support</a>
+        </li>
+        <li>
+          <a href="#Settings"><i class="fas fa-cog mr-3"></i> Settings</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-    <h2>Main page</h2>
+  <div class="container">
+    <h2 class="mb-4">Main Page</h2>
+  </div>
 
 </body>
 @endsection

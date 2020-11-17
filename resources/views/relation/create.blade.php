@@ -11,7 +11,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #0c8676;
+    background-color: #333333;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 50px;
@@ -69,109 +69,126 @@
 @section('content')
 
 <body>
+  <div class="wrapper d-flex align-items-stretch">
+    <nav class="sidebar">
+      <li class="btn">
+        <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+      </li>
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
+        </li>
+        <li>
+          <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user mr-3"></i> Profile</a>
+        </li>
+        <li>
+          <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users mr-3"></i> Students</a>
+        </li>
+        <li>
+          <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="fas fa-clock mr-3"></i> Leaving Schedule</a>
+        </li>
+        <li>
+          <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv mr-3"></i> Screen Table</a>
+        </li>
+        <li>
+          <a href="{{ route('Tech_Support.create', Auth::user()->id) }}"><i class="far fa-question-circle mr-3"></i> Technical Support</a>
+        </li>
+        <li>
+          <a href="#Settings"><i class="fas fa-cog mr-3"></i> Settings</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
   <div class="container">
-    <div class="sidebar">
-      <a href="{{ route('home')}}"><i class="fas fa-home"></i> Home</a>
-      <a href="{{ route('user.profile', Auth::user()->id) }}"><i class="fas fa-user"></i> Profile</a>
-      <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-users"></i> Students</a>
-      <a href="{{ route('lstime.index', Auth::user()->id) }}"><i class="far fa-clock"></i> Leaving Schedule</a>
-      <a href="{{ route('screenTable.screen', Auth::user()->id) }}"><i class="fas fa-tv"></i> Screen Table</a>
-      <a href="#Settings"><i class="fas fa-cog"></i> Settings</a>
-      <a href="#Technical Support"><i class="far fa-question-circle"></i> Technical Support</a>
-    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card w-100 bg-colour1">
+          <div class="card-body">
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div><br />
+            @endif
+            <h5>
+              <div class="text-center font-weight-bold">{{ __('create new Relation') }}</div>
+            </h5>
+            <form action="{{ route('relation.store', $student->std_id) }}" method="post">
+              @csrf
 
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card w-100 bg-colour1">
-            <div class="card-body">
-
-              @if ($errors->any())
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              </div><br />
-              @endif
-              <h5>
-                <div class="text-center font-weight-bold">{{ __('create new Relation') }}</div>
-              </h5>
-              <form action="{{ route('relation.store', $student->std_id) }}" method="post">
-                @csrf
+              <div class="card-body">
+                @if(session('success'))
+                <div class="alert alert-success" role="alert">
+                  {{session('success')}}
+                  @endif
+                </div>
 
 
-                <div class="card-body">
-                  @if(session('success'))
-                  <div class="alert alert-success" role="alert">
-                    {{session('success')}}
-                    @endif
+                <div class="form-group row">
+                  <label for="relation" class="col-md-4 col-form-label text-md-right">{{ __('Relation') }}</label>
+
+                  <div class="col-md-6">
+
+                    <input type="text" class="form-control @error('relation') is-invalid @enderror" name="relation" value="{{ old("relation") }}" required autocomplete="relation" autofocus>
+
+                    @error('relation')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="relation_name" class="col-md-4 col-form-label text-md-right">{{ __('Rrelation Name') }}</label>
+
+                  <div class="col-md-6">
+
+                    <input type="text" class="form-control @error('relation_name') is-invalid @enderror" name="relation_name" value="{{ old("relation_name") }}" required autocomplete="relation_name" autofocus>
+
+                    @error('relation_name')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="relation_number" class="col-md-4 col-form-label text-md-right">{{ __('Relation Phone number') }}</label>
+
+                  <div class="col-md-6">
+
+                    <input type="tel" class="form-control @error('relation_number') is-invalid @enderror" name="relation_number" value="{{ old("relation_number") }}" required autocomplete="relation_number" autofocus>
+
+                    @error('relation_number')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
 
 
-                  <div class="form-group row">
-                    <label for="relation" class="col-md-4 col-form-label text-md-right">{{ __('Relation') }}</label>
-
-                    <div class="col-md-6">
-
-                      <input type="text" class="form-control @error('relation') is-invalid @enderror" name="relation" value="{{ old("relation") }}" required autocomplete="relation" autofocus>
-
-                      @error('relation')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm text-justify text-left1">
+                      <button type="submit" class="btn btn-primary mb-4" href="#">New Relation</button>
                     </div>
                   </div>
-
-                  <div class="form-group row">
-                    <label for="relation_name" class="col-md-4 col-form-label text-md-right">{{ __('Rrelation Name') }}</label>
-
-                    <div class="col-md-6">
-
-                      <input type="text" class="form-control @error('relation_name') is-invalid @enderror" name="relation_name" value="{{ old("relation_name") }}" required autocomplete="relation_name" autofocus>
-
-                      @error('relation_name')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="relation_number" class="col-md-4 col-form-label text-md-right">{{ __('Relation Phone number') }}</label>
-
-                    <div class="col-md-6">
-
-                      <input type="tel" class="form-control @error('relation_number') is-invalid @enderror" name="relation_number" value="{{ old("relation_number") }}" required autocomplete="relation_number" autofocus>
-
-                      @error('relation_number')
-                      <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-                    </div>
-                  </div>
-
-
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-sm text-justify text-left1">
-                        <button type="submit" class="btn btn-primary mb-4" href="#">New Relation</button>
-                      </div>
-                    </div>
-                  </div>
-              </form>
-            </div>
+                </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-
 </body>
 @endsection

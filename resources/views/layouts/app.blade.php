@@ -31,10 +31,20 @@
         }
 
         body {
-            background-image: url('/img/original.png');
+            background-image: url('/img/test02.png');
             background-repeat: no-repeat;
             background-size: cover;
             margin: auto;
+        }
+
+        .font-custom {
+            font-size: 16px;
+            font-family: "Times New Roman", Times, serif;
+
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #555;
         }
     </style>
 
@@ -42,29 +52,20 @@
 
 <body>
     <div id="app">
-        <!-- Navbar content -->
+        <!-- Top Navbar content -->
         <div class="container-fluid">
             <br><br>
+
             <nav class="navbar navbar-expand-lg navbar-light">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <li class="btn">
-                    <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
-                </li>
-
-                <div class="col align-self-end">
-                </div>
-
-
+                <!-- Left Side Navbar " NOT IMPORTANT-->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
-                    </ul>
 
-                    <!-- Right Side Of Navbar -->
+                    <!-- Right Side Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -82,20 +83,22 @@
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.profile', Auth::user()->id) }}">
+                            <!-- Right Side Of Navbar -->
+                            <div class="dropdown-menu dropdown-menu-right bg-dark " aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item text-white font-custom" href="{{ route('user.profile', Auth::user()->id) }}">
                                     {{ __('View Profile') }}
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('user.edit')}}">
+                                <a class="dropdown-item text-white font-custom" href="{{ route('user.edit')}}">
                                     {{ __('Edit Profile') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('student.index', Auth::user()->id) }}">
+
+                                <a class="dropdown-item text-white font-custom" href="{{ route('student.index', Auth::user()->id) }}">
                                     {{ __('Student Profile') }}
                                 </a>
 
-
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item text-white font-custom" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
