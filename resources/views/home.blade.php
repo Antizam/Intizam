@@ -24,8 +24,10 @@
     .sidebar a {
       padding: 15px 15px 15px 16px;
       text-decoration: none;
-      font-size: 16px;
+      /*Font color on the sidebar*/
       color: white;
+      /*Font size on the sidebar*/
+      font-size: 18px;
       display: block;
     }
 
@@ -50,25 +52,35 @@
       .sidebar a {
         font-size: 18px;
       }
+
     }
 
     .bg-colour1 {
-      background-color: #0c8676 !important;
+      background-color: #ffffff !important;
+    }
+
+    .btn-link-intizam {
+      font-size: 45px;
+      color: #ffffff;
+      text-decoration: none;
     }
 
     .btn-link1 {
-      font-size: 130%;
+      font-size: 100%;
       color: #ffffff;
       text-decoration: none;
     }
 
     .text-left1 {
       padding-left: 35% !important;
+
     }
 
-    .font-custom {
+    .container-custom a {
       font-size: 30px;
-      font-family: "Times New Roman", Times, serif;
+      margin-left: 100px;
+      background-color: none;
+      color: white;
     }
   </style>
 </head>
@@ -78,9 +90,11 @@
 <body>
   <div class="wrapper d-flex align-items-stretch">
     <nav class="sidebar">
-      <li class="btn">
-        <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+
+      <li class="container-custom btn">
+        <h4><a class="btn btn-link-intizam" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
       </li>
+
       <ul class="list-unstyled components mb-5">
         <li class="active">
           <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>

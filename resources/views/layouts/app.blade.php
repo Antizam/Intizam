@@ -31,7 +31,7 @@
         }
 
         body {
-            background-image: url('/img/test02.png');
+            background-image: url('/img/original.png');
             background-repeat: no-repeat;
             background-size: cover;
             margin: auto;
