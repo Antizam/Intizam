@@ -9,7 +9,13 @@
 
 <style>
   .bg-colour1 {
-    background-color: #0c8676 !important;
+    background-color: #ffffff !important;
+  }
+
+  .btn-link-intizam {
+    font-size: 45px;
+    color: #ffffff;
+    text-decoration: none;
   }
 
   .btn-link1 {
@@ -18,19 +24,16 @@
     text-decoration: none;
   }
 
-  span>i {
-    color: white;
-  }
-
-  span>input {
-    background: none;
-    color: white;
-    padding: 0;
-    border: 0;
-  }
-
   .text-left1 {
     padding-left: 35% !important;
+
+  }
+
+  .container-custom a {
+    font-size: 30px;
+    margin-left: 100px;
+    background-color: none;
+    color: white;
   }
 </style>
 
@@ -46,34 +49,46 @@
     </div>
     @endif
 
-    <br><br>
     <div id="res">
-      <div class="container-fluid">
-        <div class="row">
-          <table class="table table-bordered table-striped table-sm text-center">
-            <thead class="thead-dark">
-              <tr>
-                <th>No</th>
-                <th>Student Name</th>
-                <th>Relation</th>
-                <th>Relation Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($students as $student)
-              <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{$student->std_name}}</td>
+      <!-- Page content -->
+      <br><br><br><br>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col">
+            <div class="card-header w-100 bg-colour1">
+              <!-- Card Title -->
+              <h4>
+                <div class="text-center font-weight-bold">
+                  {{ __('Arrivals Screen') }}
+                </div>
+              </h4>
+              <hr>
+              <table class="table table-bordered table-striped table-sm text-center">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>No</th>
+                    <th>Student Name</th>
+                    <th>Relation</th>
+                    <th>Relation Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($students as $student)
+                  <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{$student->std_name}}</td>
 
-              </tr>
+                  </tr>
 
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-        <div class="container">
-          <div class="row justify-content-center">
-            {{ $students->links() }}
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+            <div class="container">
+              <div class="row justify-content-center">
+                {{ $students->links() }}
+              </div>
+            </div>
           </div>
         </div>
       </div>

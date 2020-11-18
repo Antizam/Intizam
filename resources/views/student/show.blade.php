@@ -21,8 +21,10 @@
     .sidebar a {
         padding: 15px 15px 15px 16px;
         text-decoration: none;
-        font-size: 16px;
+        /*Font color on the sidebar*/
         color: white;
+        /*Font size on the sidebar*/
+        font-size: 18px;
         display: block;
     }
 
@@ -31,16 +33,6 @@
         color: white;
         text-decoration: none;
         cursor: pointer;
-    }
-
-    .bg-colour1 {
-        background-color: #0c8676 !important;
-    }
-
-    .btn-link1 {
-        font-size: 100%;
-        color: #ffffff;
-        text-decoration: none;
     }
 
     .sidebar a:hover:not(.active) {
@@ -60,20 +52,45 @@
 
     }
 
+    .bg-colour1 {
+        background-color: #ffffff !important;
+    }
+
+    .btn-link-intizam {
+        font-size: 45px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .btn-link1 {
+        font-size: 100%;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
     .text-left1 {
         padding-left: 35% !important;
 
     }
-</style>
 
+    .container-custom a {
+        font-size: 30px;
+        margin-left: 100px;
+        background-color: none;
+        color: white;
+    }
+</style>
 @section('content')
 
 <body>
+    <!-- Sidebar content -->
     <div class="wrapper d-flex align-items-stretch">
         <nav class="sidebar">
-            <li class="btn">
-                <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+
+            <li class="container-custom btn">
+                <h4><a class="btn btn-link-intizam" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
             </li>
+
             <ul class="list-unstyled components mb-5">
                 <li class="active">
                     <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
@@ -101,10 +118,19 @@
     </div>
 
 
+    <!-- Page content -->
+    <br><br><br><br>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card w-100 bg-colour1">
+            <div class="col">
+                <div class="card-header w-100 bg-colour1">
+                    <!-- Card Title -->
+                    <h4>
+                        <div class="text-center font-weight-bold">
+                            {{ __('Student Profile') }}
+                        </div>
+                    </h4>
+                    <hr>
                     <div class="card-body">
 
                         @if (session('danger'))
@@ -112,11 +138,8 @@
                             {{ session('danger') }}
                         </div>
                         @endif
-                        <h5>
-                            <div class="text-center font-weight-bold">{{ __('Profile') }}</div>
-                        </h5>
                         <div class="form-group row">
-                            <label for="std_id" class="col-md-4 col-form-label text-md-right">{{ __('std_id') }}</label>
+                            <label for="std_id" class="col-md-4 col-form-label text-md-right">{{ __('Student ID') }}</label>
 
                             <div class="col-md-6">
                                 <label for="std_id"></label>
@@ -124,7 +147,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="std_name" class="col-md-4 col-form-label text-md-right">{{ __('std_name') }}</label>
+                            <label for="std_name" class="col-md-4 col-form-label text-md-right">{{ __('Student Name') }}</label>
 
                             <div class="col-md-6">
                                 <label for="std_name"></label>
@@ -133,7 +156,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="std_email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="std_email" class="col-md-4 col-form-label text-md-right">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="std_email" type="email" class="form-control @error('std_email') is-invalid @enderror" name="std_email" value="{{ $student['std_email'] }}" readonly required autocomplete="std_email">
@@ -147,7 +170,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="std_password" class="col-md-4 col-form-label text-md-right">{{ __('std_password') }}</label>
+                            <label for="std_password" class="col-md-4 col-form-label text-md-right">{{ __('Student Password') }}</label>
 
                             <div class="col-md-6">
                                 <label for="std_password"></label>

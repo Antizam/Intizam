@@ -21,8 +21,10 @@
     .sidebar a {
         padding: 15px 15px 15px 16px;
         text-decoration: none;
-        font-size: 16px;
+        /*Font color on the sidebar*/
         color: white;
+        /*Font size on the sidebar*/
+        font-size: 18px;
         display: block;
     }
 
@@ -31,16 +33,6 @@
         color: white;
         text-decoration: none;
         cursor: pointer;
-    }
-
-    .bg-colour1 {
-        background-color: #0c8676 !important;
-    }
-
-    .btn-link1 {
-        font-size: 100%;
-        color: #ffffff;
-        text-decoration: none;
     }
 
     .sidebar a:hover:not(.active) {
@@ -60,20 +52,46 @@
 
     }
 
+    .bg-colour1 {
+        background-color: #ffffff !important;
+    }
+
+    .btn-link-intizam {
+        font-size: 45px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .btn-link1 {
+        font-size: 100%;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
     .text-left1 {
         padding-left: 35% !important;
 
+    }
+
+    .container-custom a {
+        font-size: 30px;
+        margin-left: 100px;
+        background-color: none;
+        color: white;
     }
 </style>
 
 @section('content')
 
 <body>
+    <!-- Sidebar content -->
     <div class="wrapper d-flex align-items-stretch">
         <nav class="sidebar">
-            <li class="btn">
-                <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+
+            <li class="container-custom btn">
+                <h4><a class="btn btn-link-intizam" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
             </li>
+
             <ul class="list-unstyled components mb-5">
                 <li class="active">
                     <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
@@ -101,10 +119,19 @@
     </div>
 
 
+    <!-- Page content -->
+    <br><br><br><br>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card w-100 bg-colour1">
+            <div class="col">
+                <div class="card-header w-100 bg-colour1">
+                    <!-- Card Title -->
+                    <h4>
+                        <div class="text-center font-weight-bold">
+                            {{ __('Relation Information') }}
+                        </div>
+                    </h4>
+                    <hr>
                     <div class="card-body">
 
                         @if (session('danger'))
@@ -112,9 +139,6 @@
                             {{ session('danger') }}
                         </div>
                         @endif
-                        <h5>
-                            <div class="text-center font-weight-bold">{{ __('Student Relation Information') }}</div>
-                        </h5>
                         <div class="form-group row">
                             <label for="relation" class="col-md-4 col-form-label text-md-right">{{ __('Relation Type') }}</label>
 
@@ -133,7 +157,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="relation_number" class="col-md-4 col-form-label text-md-right">{{ __('Relation Phone Number') }}</label>
+                            <label for="relation_number" class="col-md-4 col-form-label text-md-right">{{ __('Relation phone number') }}</label>
 
                             <div class="col-md-6">
                                 <input id="relation_number" type="email" class="form-control @error('relation_number') is-invalid @enderror" name="relation_number" value="{{ $relation['relation_number'] }}" readonly required autocomplete="relation_number">
@@ -151,6 +175,11 @@
                             <div class="col-md-6">
                                 <label for="created_at"></label>
                                 <input id="created_at" type="text" class="form-control @error('created_at') is-invalid @enderror" name="created_at" value="{{ $relation['created_at'] }}" readonly required autocomplete="created_at" autofocus>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 margin-tb">
+                            <div class="btn  mb1 black bg-white">
+                                <a href="{{ route('student.index', Auth::user()->id) }}"><i class="fas fa-arrow-left"></i> Back</a>
                             </div>
                         </div>
                     </div>

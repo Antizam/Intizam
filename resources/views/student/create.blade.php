@@ -21,8 +21,10 @@
   .sidebar a {
     padding: 15px 15px 15px 16px;
     text-decoration: none;
-    font-size: 16px;
+    /*Font color on the sidebar*/
     color: white;
+    /*Font size on the sidebar*/
+    font-size: 18px;
     display: block;
   }
 
@@ -31,16 +33,6 @@
     color: white;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  .bg-colour1 {
-    background-color: #0c8676 !important;
-  }
-
-  .btn-link1 {
-    font-size: 100%;
-    color: #ffffff;
-    text-decoration: none;
   }
 
   .sidebar a:hover:not(.active) {
@@ -60,20 +52,46 @@
 
   }
 
-  .text-left1 {
-    padding-left: 40% !important;
+  .bg-colour1 {
+    background-color: #ffffff !important;
+  }
 
+  .btn-link-intizam {
+    font-size: 45px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .btn-link1 {
+    font-size: 100%;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .text-left1 {
+    padding-left: 35% !important;
+
+  }
+
+  .container-custom a {
+    font-size: 30px;
+    margin-left: 100px;
+    background-color: none;
+    color: white;
   }
 </style>
 
 @section('content')
 
 <body>
+  <!-- Sidebar content -->
   <div class="wrapper d-flex align-items-stretch">
     <nav class="sidebar">
-      <li class="btn">
-        <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+
+      <li class="container-custom btn">
+        <h4><a class="btn btn-link-intizam" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
       </li>
+
       <ul class="list-unstyled components mb-5">
         <li class="active">
           <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
@@ -100,13 +118,21 @@
     </nav>
   </div>
 
-  <br><br>
+  <!-- Page content -->
+  <br><br><br><br>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card w-100 bg-colour1">
-          <div class="card-body">
+      <div class="col">
+        <div class="card-header w-100 bg-colour1">
+          <!-- Card Title -->
+          <h4>
+            <div class="text-center font-weight-bold">
+              {{ __('Create a new student') }}
+            </div>
+          </h4>
+          <hr>
 
+          <div class="card-body">
             @if ($errors->any())
             <div class="alert alert-danger">
               <ul>
@@ -116,9 +142,6 @@
               </ul>
             </div><br />
             @endif
-            <h5>
-              <div class="text-center font-weight-bold">{{ __('create new Students') }}</div>
-            </h5>
             <form action="{{ route('student.store', Auth::user()->id) }}" method="post">
               @csrf
 
@@ -147,7 +170,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="std_name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
+                  <label for="std_name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                   <div class="col-md-6">
 
@@ -162,7 +185,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="std_email" class="col-md-4 col-form-label text-md-right">{{ __('EMAIL') }}</label>
+                  <label for="std_email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                   <div class="col-md-6">
 
@@ -180,11 +203,12 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-sm text-justify text-left1">
-                      <button type="submit" class="btn btn-primary mb-4" href="#">New Student</button>
+                      <button type="submit" class="btn btn-primary mb-4" href="#">Add student</button>
                     </div>
                   </div>
                 </div>
             </form>
+
             <div class="row">
               <div class="col-lg-12 margin-tb">
                 <div class="btn  mb1 black bg-white">
@@ -192,6 +216,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

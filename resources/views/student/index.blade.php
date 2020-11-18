@@ -21,8 +21,10 @@
   .sidebar a {
     padding: 15px 15px 15px 16px;
     text-decoration: none;
-    font-size: 16px;
+    /*Font color on the sidebar*/
     color: white;
+    /*Font size on the sidebar*/
+    font-size: 18px;
     display: block;
   }
 
@@ -31,16 +33,6 @@
     color: white;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  .bg-colour1 {
-    background-color: #0c8676 !important;
-  }
-
-  .btn-link1 {
-    font-size: 100%;
-    color: #ffffff;
-    text-decoration: none;
   }
 
   .sidebar a:hover:not(.active) {
@@ -57,21 +49,49 @@
     .sidebar a {
       font-size: 18px;
     }
+
+  }
+
+  .bg-colour1 {
+    background-color: #ffffff !important;
+  }
+
+  .btn-link-intizam {
+    font-size: 45px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .btn-link1 {
+    font-size: 100%;
+    color: #ffffff;
+    text-decoration: none;
   }
 
   .text-left1 {
     padding-left: 35% !important;
+
+  }
+
+  .container-custom a {
+    font-size: 30px;
+    margin-left: 100px;
+    background-color: none;
+    color: white;
   }
 </style>
 
 @section('content')
 
 <body>
+  <!-- Sidebar content -->
   <div class="wrapper d-flex align-items-stretch">
     <nav class="sidebar">
-      <li class="btn">
-        <h4><a class="btn btn-link1" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+
+      <li class="container-custom btn">
+        <h4><a class="btn btn-link-intizam" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
       </li>
+
       <ul class="list-unstyled components mb-5">
         <li class="active">
           <a href="{{ route('home')}}"><i class="fa fa-home mr-3"></i> Home</a>
@@ -98,74 +118,86 @@
     </nav>
   </div>
 
-  <br><br>
+  <!-- Page content -->
+  <br><br><br><br>
   <div class="container">
-    <section class="jumbotron text-center navbar-custom">
-      <div class="card card-body">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="card-header w-100 bg-colour1">
+          <!-- Card Title -->
+          <h4>
+            <div class="text-center font-weight-bold">
+              {{ __('Student List') }}
+            </div>
+          </h4>
+          <hr>
 
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-left margin-tb">
-              <a class="btn btn-success" href="{{ route('student.create', Auth::user()->id) }}"> Create New Student</a>
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 text-left margin-tb">
+                  <a class="btn btn-success" href="{{ route('student.create', Auth::user()->id) }}"> Create New Student</a>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+              <p>{{ $message }}</p>
+            </div>
+            @endif
+
+
+            <div class="row">
+              <table class="table table-bordered table-striped table-sm text-center">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>No</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Student Email</th>
+                    <th width="280px">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($students as $student)
+                  <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{$student->std_id}}</td>
+                    <td>{{$student->std_name}}</td>
+                    <td>{{$student->std_email}}</td>
+
+                    <td>
+                      <form action="{{ route('student.destroy',$student->std_id) }}" method="POST">
+
+                        <a class="btn btn-secondary" href="{{ route('relation.index',$student->std_id) }}">Relations</a>
+
+                        <a class="btn btn-info" href="{{ route('student.show',$student->std_id) }}">Show</a>
+
+                        <a class="btn btn-primary" href="{{ route('student.edit',$student->std_id) }}">Edit</a>
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student ?')">Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+            <div class="container">
+              <div class="row justify-content-center">
+                {{ $students->links() }}
+              </div>
             </div>
           </div>
         </div>
-        <br>
-
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-          <p>{{ $message }}</p>
-        </div>
-        @endif
-
-
-        <div class="row">
-          <table class="table table-bordered table-striped table-sm text-center">
-            <thead class="thead-dark">
-              <tr>
-                <th>No</th>
-                <th>Student ID</th>
-                <th>Student Name</th>
-                <th>Student Email</th>
-                <th width="280px">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($students as $student)
-              <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{$student->std_id}}</td>
-                <td>{{$student->std_name}}</td>
-                <td>{{$student->std_email}}</td>
-
-                <td>
-                  <form action="{{ route('student.destroy',$student->std_id) }}" method="POST">
-
-                    <a class="btn btn-secondary" href="{{ route('relation.index',$student->std_id) }}">Relations</a>
-
-                    <a class="btn btn-info" href="{{ route('student.show',$student->std_id) }}">Show</a>
-
-                    <a class="btn btn-primary" href="{{ route('student.edit',$student->std_id) }}">Edit</a>
-
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Student ?')">Delete</button>
-                  </form>
-                </td>
-              </tr>
-
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-        <div class="container">
-          <div class="row justify-content-center">
-            {{ $students->links() }}
-          </div>
-        </div>
       </div>
-    </section>
+    </div>
   </div>
 </body>
 @endsection
