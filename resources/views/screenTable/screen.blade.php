@@ -52,8 +52,8 @@
     <div id="res">
       <!-- Page content -->
       <br><br><br><br>
-      <div class="container">
-        <div class="row justify-content-center">
+      <div class="container-fulid">
+        <div class="row">
           <div class="col">
             <div class="card-header w-100 bg-colour1">
               <!-- Card Title -->

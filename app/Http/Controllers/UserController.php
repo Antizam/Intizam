@@ -228,10 +228,9 @@ class UserController extends Controller
     {
 
         $users = User::find($id);
-        $users = DB::table('students')->orderBy('created_at', 'desc')->where('user_id', $users->id)->paginate(6);
+        $users = DB::table('students')->orderBy('created_at', 'desc')->where('user_id', $users->id)->paginate(25);
 
         return view('screenTable.screen', ['students' => $users])
             ->with('i');
     }
-
 }
