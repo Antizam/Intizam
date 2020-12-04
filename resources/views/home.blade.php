@@ -92,7 +92,7 @@
     <nav class="sidebar">
 
       <li class="container-custom btn">
-        <h4><a class="btn btn-link-intizam" href="{{ url('/') }}">{{ config('Intizam', 'Intizam') }}</a></h4>
+        <h4><a class="btn btn-link-intizam" href="{{ route('home')}}" }}>{{ config('Intizam', 'Intizam') }}</a></h4>
       </li>
 
       <ul class="list-unstyled components mb-5">
