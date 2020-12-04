@@ -104,7 +104,7 @@
         <div id="myCarousel" class="carousel slide">
             <!-- Indicators -->
             <ul class="carousel-indicators">
-                <li class="item1 active"></li>
+                <li class="test01 active"></li>
                 <li class="item2"></li>
                 <li class="item3"></li>
             </ul>
@@ -112,7 +112,7 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../img/item1.png" width="700" height="500">
+                    <img src="../img/test01.png" width="700" height="500">
                 </div>
                 <div class="carousel-item">
                     <img src="../img/item2.png" width="700" height="500">
