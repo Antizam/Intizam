@@ -27,8 +27,12 @@
       color: #262626;
     }
 
+    .bg-colour1 {
+      background-color: #ffffff !important;
+    }
+
     body {
-      background-image: url('/img/mainpage.png');
+      background-image: url('/img/Original.png');
       background-repeat: no-repeat;
       background-size: cover;
       margin: auto;
@@ -56,46 +60,31 @@
   </div>
 </header>
 
-
-<!-- Body -->
+<!-- Page content -->
+<br><br><br><br><br>
 
 <body>
-
   <div class="container">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="row justify-content-md-center">
-      <div class="row">
-        <div class="col-7">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">For Schools</h5>
-              <p class="card-text">Its helps in organizing the process of students leaving the school and avoiding the crowding.</p>
+      <div class="col">
+        <div class="card-header w-100 bg-colour1">
+          <!-- Card Title -->
+          <h4>
+            <div class="text-center font-weight-bold">
+              {{ __('CS 499 Graduation Project') }}
             </div>
-          </div>
-        </div>
-      </div>
+          </h4>
+          <hr>
+          <h3>About the Project</h3>
+          <p></p>
+          <h3>Schools</h3>
+          <p></p>
+          <h3>Drivers</h3>
+          <p></p>
+          <h3>Students</h3>
 
-      <div class="row-8">
-        <div class="col-7">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">For Student Drivers</h5>
-              <p class="card-text">its helps by reducing the time of waiting for students to comes out from school.</p>
-            </div>
-          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-7">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">For Students</h5>
-              <p class="card-text">it help by organize them and avoid the crowds of students in the school main gates.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
