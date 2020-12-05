@@ -104,21 +104,21 @@
         <div id="myCarousel" class="carousel slide">
             <!-- Indicators -->
             <ul class="carousel-indicators">
-                <li class="test01 active"></li>
-                <li class="item2"></li>
-                <li class="item3"></li>
+                <li class="mainFrameOne active"></li>
+                <li class="mainFrameTwo"></li>
+                <li class="mainFrameThree"></li>
             </ul>
 
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../img/test01.png" width="700" height="500">
+                    <img src="../img/mainFrameOne.png" width="700" height="500">
                 </div>
                 <div class="carousel-item">
-                    <img src="../img/item2.png" width="700" height="500">
+                    <img src="../img/mainFrameTwo.png" width="700" height="500">
                 </div>
                 <div class="carousel-item">
-                    <img src="../img/item3.png" width="700" height="500">
+                    <img src="../img/mainFrameThree.png" width="700" height="500">
                 </div>
             </div>
 

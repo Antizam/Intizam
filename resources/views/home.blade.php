@@ -95,7 +95,7 @@
       color: #fff;
     }
 
-   
+
     .bg-c-blue {
       background: linear-gradient(45deg, #86b2c1, #86b2c1);
     }
@@ -104,12 +104,13 @@
       background: linear-gradient(45deg, #eee3e0, #eee3e0);
     }
 
-
+    /* Changed the color to black*/
     .card {
       border-radius: 5px;
       -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
       box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
       border: none;
+      color: black;
       margin-bottom: 30px;
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
@@ -135,7 +136,7 @@
 
 @section('content')
 
-
+<!--Side bar -->
 <div class="wrapper d-flex align-items-stretch">
   <nav class="sidebar">
 
@@ -169,18 +170,21 @@
   </nav>
 </div>
 
+
+<!--Body -->
+
 <body>
   <div class="container">
-    <h2 class="mb-4">Main Page</h2>
+    <h2 class="mb-4">School Statistics</h2>
     <div class="row">
       <div class="col-md-4 col-xl-3">
         <div class="card bg-c-blue order-card">
           <div class="card-block">
-            <h6 class="m-b-20">Students total number</h6>
+            <h6 class="m-b-20">Total number of students</h6>
             <i class="fas fa-chart-pie fa-3x f-left"></i>
             <h2 class="text-right"><span>426</span></h2>
-          <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
-            <p class="m-b-0">This is the number of students in your school, including all Level and grades.</p>
+            <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
+            <p class="m-b-0">This is the number of students this your school, including all level and grades.</p>
           </div>
         </div>
       </div>
@@ -193,32 +197,32 @@
             <div class="progress md-progress">
               <div class="progress-bar cyan lighten-1" role="progressbar" style="width: 7%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <p class="text-muted">Better than last week (70%)</p>
-          <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
-            <p class="m-b-0">This is the Congestion rate in your school competing in the past week.</p>
+            <p class="text" style="color: green;">Better than last week by (70%)</p>
+            <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
+            <p class="m-b-0">This is the congestion rate in this school competing in the past week.</p>
           </div>
         </div>
       </div>
-     
+
       <div class="col-md-4 col-xl-3">
         <div class="card bg-c-pink order-card">
           <div class="card-block">
-            <h6 class="m-b-20">The crowded Day</h6>
+            <h6 class="m-b-20">Most crowded day of the week</h6>
             <i class="fas fa-calendar-week f-left"></i>
             <h2 class="text-right"><span>Monday</span></h2>
-          <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
-            <p class="m-b-0">This is the most crowded day this week in your school based on real data.</p>
+            <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
+            <p class="m-b-0">This is the most crowded day this week for this school based on real data.</p>
           </div>
         </div>
       </div>
-    
+
       <div class="col-md-4 col-xl-3">
         <div class="card bg-c-pink order-card">
           <div class="card-block">
-            <h6 class="m-b-20">Time remaining for Leaving</h6>
+            <h6 class="m-b-20">Time remaining for leaving</h6>
             <i class="fas fa-clock f-left"></i>
-            <h2 class="text-right"><span>40 Minute</span></h2>
-          <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
+            <h2 class="text-right" style="color: red;"><span>40 Minutes</span></h2>
+            <h4 class="text-uppercase font-weight-bold my-4">Details</h4>
             <p class="m-b-0">The remaining time for students to leave the school, please be ready.</p>
           </div>
         </div>
