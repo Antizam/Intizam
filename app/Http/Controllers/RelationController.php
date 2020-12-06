@@ -76,7 +76,7 @@ class RelationController extends Controller
         $new_Relation->fill($relation_info);
         $new_Relation->save();
 
-        $request->session()->flash('success', 'Your profile has been updated');
+        $request->session()->flash('success', 'a new relation has been added');
         return redirect()->route('relation.index', $std_id);
     }
 

@@ -110,7 +110,7 @@ class StudentsController extends Controller
         $new_Students->fill($std_info);
         $new_Students->save();
 
-        $request->session()->flash('success', 'Your profile has been updated');
+        $request->session()->flash('success', 'a new student has been added');
         return redirect()->route('student.index', $id);
     }
 
