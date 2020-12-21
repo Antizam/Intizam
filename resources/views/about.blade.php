@@ -75,13 +75,18 @@
             </div>
           </h4>
           <hr>
-          <h3>About the Project</h3>
-          <p></p>
+          <h3>Story of the project</h3>
+          <h5>In this era, and the expansion of the technology across the world has led the Saudi Arabia to be one of the most encouraging and supportive country to participate in technology, and that starts with the education since it's the core of the developed countries. Hence, the problem arose with the females' schools, leaving traditional system that is hard to comply. We have created Intizam an electronic system for leaving the school in the easiest way possible.
+            It started as an idea, and here we publish it as a graduation project for two students from Qassim University that they wanted to make a change and solve one this issue in a way that comply with this era.</h5>
+          <hr>
           <h3>Schools</h3>
-          <p></p>
+          <h5>The admin can do the following: login, registrations, add new students, modify student information, edit and view the student leaving schedule, and communicate with the student relatives.</h5>
+          <br>
           <h3>Drivers</h3>
-          <p></p>
+          <h5>The student's relatives (Drivers) can do the following: login, view the student leaving schedule, confirm arriving, change the password, and communicate with the admin.</h5>
+          <br>
           <h3>Students</h3>
+          <h5>The student can also log in and view the student leaving schedule, change the password and more.</h5>
 
         </div>
       </div>
