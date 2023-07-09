@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/{id}', 'UserController@profile')->name('user.profile');
 
-// Password route show form
+// Password route show form -test here 
 Route::get('/password/user/', 'UserController@passwordEdit')->name('user.password');
 // Password Post to change
 Route::post('/password/user/', 'UserController@changePassword')->name('changePassword');
